@@ -1,9 +1,10 @@
 import React, { useState, useContext } from 'react';
-
+import { QuizContext } from '../Helpers/Contexts';
 // TODO import questions from API 
+import getQuiz from './QuizStart';
 
 const Questions = () => {
-    const { score, setScore, setGameState } = useContext()
+    const { score, setScore, setGameState } = useContext(QuizContext)
 
     const [ currQuestion, setCurrQuestion ] = useState(0);
     const [ optionChosen, setOptionChosen ] = useState("");
@@ -19,12 +20,14 @@ const Questions = () => {
         // if question answer == question option 
         // then setScore(score + 1)
 
-        //setGameState("endScreen")
+        //setGameState("end")
     }
-  
+    
+    
     // TODO Add API questions and options 
     return <div className="Quiz">
         <h1>Question 1: "What is Marina's favourite food?"</h1>
+        {/* <h1>{data.results[0].question}</h1> */}
         <div>
             <button onClick={() => setOptionChosen("A")}>Pizza</button>
             <button onClick={() => setOptionChosen("B")}>Spaghetti</button>
