@@ -13,6 +13,7 @@ function App() {
             <QuizContext.Provider value={{ gameState, setGameState }}>
                 {gameState === "menu" && <QuizStart />}
                 {gameState === "quiz" && <Questions />}
+                {/* {gameState === "end" && <End />} */}
             </QuizContext.Provider>
         </div>
     )
