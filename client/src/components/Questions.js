@@ -22,7 +22,8 @@ const Questions = () => {
 
         //setGameState("end")
     }
-    console.log(getQuiz())
+    
+    
     // TODO Add API questions and options 
     return <div className="Quiz">
         <h1>Question 1: "What is Marina's favourite food?"</h1>

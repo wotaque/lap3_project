@@ -78,8 +78,6 @@ const QuizStart = () => {
                 <Button onClick={() => getQuiz([amount, difficulty, category]) && setGameState("quiz")} variant="contained" type="submit" value="Start Quiz" >Start Quiz</Button>
 
                 </FormControl>
-                
-
               
             </FormControl>
             </Container>
@@ -89,10 +87,9 @@ const QuizStart = () => {
 };
 
     export async function getQuiz([amount, difficulty, category]) {
-    
     try{
     let { data } = await axios.get(`https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=multiple`)  
-    console.log(data)
+    // console.log(data)
     return { data }
 
     }catch(error){
