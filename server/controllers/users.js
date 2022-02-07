@@ -22,8 +22,6 @@ router.post('/highscore', async (req, res) => {
     await newUser.save();
     res.json(user)
 });
-// router.post('/leaderboard', async (req, res) => {
 
-// })
 
 module.exports = router;
