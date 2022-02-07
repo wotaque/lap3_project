@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react';
-
+import { QuizContext } from '../Helpers/Contexts';
 // TODO import questions from API 
 
 const Questions = () => {
-    const { score, setScore, setGameState } = useContext()
+    const { score, setScore, setGameState } = useContext(QuizContext)
 
     const [ currQuestion, setCurrQuestion ] = useState(0);
     const [ optionChosen, setOptionChosen ] = useState("");

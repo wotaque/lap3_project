@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
+import { QuizContext } from '../Helpers/Contexts';
 import axios from "axios";
 import { Select, MenuItem, InputLabel, FormControl, Button } from '@mui/material';
 
@@ -7,7 +8,7 @@ const QuizStart = () => {
  const [difficulty, setDifficulty] = useState("");
  const [category, setCategory] = useState("");
 
-
+ const { gameState, setGameState } = useContext(QuizContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -70,7 +71,7 @@ const QuizStart = () => {
                     <MenuItem value="31">Anime & Manga</MenuItem>
                 </Select>   
 
-                <Button onClick={() => getQuiz([amount, difficulty, category])} variant="contained" type="submit" value="Start Quiz" >Start Quiz</Button>
+                <Button onClick={() => getQuiz([amount, difficulty, category])} onClick={() => {setGameState("quiz")}} variant="contained" type="submit" value="Start Quiz" >Start Quiz</Button>
               
             </FormControl>
       
@@ -92,4 +93,4 @@ const QuizStart = () => {
 
 export default QuizStart;
 
-;
+
