@@ -22,11 +22,11 @@ const Questions = () => {
 
         //setGameState("end")
     }
-    getQuiz()
+    console.log(getQuiz())
     // TODO Add API questions and options 
     return <div className="Quiz">
         <h1>Question 1: "What is Marina's favourite food?"</h1>
-        <h1>{data.results[0].question}</h1>
+        {/* <h1>{data.results[0].question}</h1> */}
         <div>
             <button onClick={() => setOptionChosen("A")}>Pizza</button>
             <button onClick={() => setOptionChosen("B")}>Spaghetti</button>
