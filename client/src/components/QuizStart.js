@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import axios from "axios";
-import { Select, MenuItem, InputLabel, FormControl, Button } from '@mui/material';
+import { Select, MenuItem, InputLabel, FormControl, Button, Container } from '@mui/material';
 
 const QuizStart = () => {
  const [amount, setAmount] = useState("");
@@ -22,11 +22,12 @@ const QuizStart = () => {
  
  
  
- return <div className="FormApp" >
-     
-            <FormControl onSubmit={handleSubmit} className="form">
+ return <div className="FormApp" style={{ width: '100%' }} >
+            <Container style={{ width:200, margin: 'auto' }}>
+            <FormControl onSubmit={handleSubmit} className="form" margin='normal' >
                 
                 
+                <FormControl margin='normal'>
                 <InputLabel id="amount-label">Amount</InputLabel>
                     <Select labelId="amount-label"
                             id = "amount" 
@@ -39,7 +40,8 @@ const QuizStart = () => {
                         <MenuItem value="10">10</MenuItem>
                         <MenuItem value="5">5</MenuItem>
                     </Select>     
-               
+               </FormControl>
+               <FormControl margin='normal'>
                 <InputLabel id="difficulty-label">Difficulty</InputLabel>
                 
                 <Select labelId="difficulty-label"
@@ -53,7 +55,8 @@ const QuizStart = () => {
                     <MenuItem value="medium">Medium</MenuItem>
                     <MenuItem value="hard">Hard</MenuItem>                
                 </Select>     
-
+                </FormControl>
+                <FormControl margin='normal'>
                 <InputLabel id="category-label">Category</InputLabel>
                 
                 <Select labelId="category-label"
@@ -69,11 +72,11 @@ const QuizStart = () => {
                     <MenuItem value="23">History</MenuItem>
                     <MenuItem value="31">Anime & Manga</MenuItem>
                 </Select>   
-
+                </FormControl>
                 <Button onClick={() => getQuiz([amount, difficulty, category])} variant="contained" type="submit" value="Start Quiz" >Start Quiz</Button>
               
             </FormControl>
-      
+            </Container>
         
         </div>
         
@@ -83,8 +86,11 @@ const QuizStart = () => {
     
     try{
     let { data } = await axios.get(`https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=multiple`)
-    console.log(data, amount)
-    return console.log(data)
+
+    let newData =  await {questions: data.results[0]}    
+    console.log(data, newData)
+    return <p>{newData}</p>
+
     }catch(error){
         throw error
     }
