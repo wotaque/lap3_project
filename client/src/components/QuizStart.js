@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
+import { QuizContext } from '../Helpers/Contexts';
 import axios from "axios";
 import { Select, MenuItem, InputLabel, FormControl, Button, Container } from '@mui/material';
 
@@ -7,7 +8,7 @@ const QuizStart = () => {
  const [difficulty, setDifficulty] = useState("");
  const [category, setCategory] = useState("");
 
-
+ const { gameState, setGameState } = useContext(QuizContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -72,8 +73,11 @@ const QuizStart = () => {
                     <MenuItem value="23">History</MenuItem>
                     <MenuItem value="31">Anime & Manga</MenuItem>
                 </Select>   
+
+
+                <Button onClick={() => getQuiz([amount, difficulty, category]) && setGameState("quiz")} variant="contained" type="submit" value="Start Quiz" >Start Quiz</Button>
+
                 </FormControl>
-                <Button onClick={() => getQuiz([amount, difficulty, category])} variant="contained" type="submit" value="Start Quiz" >Start Quiz</Button>
               
             </FormControl>
             </Container>
@@ -82,14 +86,11 @@ const QuizStart = () => {
         
 };
 
-    async function getQuiz([amount, difficulty, category]) {
-    
+    export async function getQuiz([amount, difficulty, category]) {
     try{
-    let { data } = await axios.get(`https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=multiple`)
-
-    let newData =  await {questions: data.results[0]}    
-    console.log(data, newData)
-    return <p>{newData}</p>
+    let { data } = await axios.get(`https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=multiple`)  
+    // console.log(data)
+    return { data }
 
     }catch(error){
         throw error
@@ -97,5 +98,3 @@ const QuizStart = () => {
 }
 
 export default QuizStart;
-
-;
