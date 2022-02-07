@@ -23,5 +23,8 @@ router.post('/highscore', async (req, res) => {
 
     res.json(user)
 });
+// router.post('/leaderboard', async (req, res) => {
+
+// })
 
 module.exports = router;
