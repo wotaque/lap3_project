@@ -16,8 +16,12 @@ router.get('/leaderboard', (req, res) => async (req, res) => {
 })
 
 // Posting highscores
-// router.post('/leaderboard', async (req, res) => {
+router.post('/highscore', async (req, res) => {
+    const user = req.body; 
+    const newUser = new User(user);
+    await newUser.save();
 
-// })
+    res.json(user)
+});
 
 module.exports = router;
