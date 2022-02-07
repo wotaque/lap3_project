@@ -20,11 +20,8 @@ router.post('/highscore', async (req, res) => {
     const user = req.body; 
     const newUser = new User(user);
     await newUser.save();
-
     res.json(user)
 });
-// router.post('/leaderboard', async (req, res) => {
 
-// })
 
 module.exports = router;
