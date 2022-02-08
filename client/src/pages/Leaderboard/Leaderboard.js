@@ -18,11 +18,17 @@ const Leaderboard = () => {
 }
   return <div>
       <h1>Leaderboard</h1>
+      <Button variant="contained" onClick={goHome}>Home</Button>
       
       {userScore.map((val, key) => {
-          return <div key={key}> <h1>Username: {val.name}</h1> <h1>Score: {val.score}</h1> </div>
+          return <div key={key}> 
+          <h2>Username: {val.name}</h2> 
+          <h2>Score: {val.score}/{val.amount}</h2>
+          <h2>Difficulty: {val.difficulty}</h2>
+          <h2>Category: {val.category}</h2>
+           </div>
       })}  
-        <Button variant="contained" onClick={goHome}>Home</Button>
+        
   </div>;
 };
 

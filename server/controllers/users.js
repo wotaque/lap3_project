@@ -20,8 +20,11 @@ router.get("/leaderboard", async (req, res) => {
 router.post('/insert', async (req, res) => {
     const name = req.body.name; 
     const score = req.body.score;
+    const category = req.body.category;
+    const amount = req.body.amount;
+    const difficulty = req.body.difficulty;
 
-    const user = new User({ name: name, score: score })
+    const user = new User({ name: name, score: score, category: category, amount: amount, difficulty: difficulty })
     try {
         await user.save();
         res.send("Inserted new highscore")
