@@ -29,12 +29,20 @@ const navigate = useNavigate();
 
         <FormControl  className="form" margin='normal' >
 
-            <FormControl margin='normal'>
-                <TextField labelId="players-label"
-                            id = "players" 
-                            label="players" 
-                            InputProps={{ inputProps: { min: 0, max: 2 } }}
-                            onChange={(e =>setPlayers(e.target.value))}/>
+             <FormControl margin='normal'>
+                <InputLabel id="player-label">Players</InputLabel>
+                
+                <Select labelId="players-label"
+                        id = "players" 
+                        type = "number"
+                        label = "players" 
+                        onChange={(e =>setPlayers(e.target.value))}>
+
+                    <MenuItem value="0">1</MenuItem>
+                    <MenuItem value="1">2</MenuItem>
+                    <MenuItem value="2">3</MenuItem>
+                    <MenuItem value="3">4</MenuItem>                    
+                </Select>    
             </FormControl>
            
             <FormControl margin='normal'>

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router';
 import { Button } from '@mui/material';
 import Axios from 'axios';
 
-const Result = ({name, score, category, difficulty, amount}) => {
+const Result = ({name, score, category, difficulty, amount, setScore}) => {
     const navigate = useNavigate();
 
 
@@ -15,6 +15,7 @@ const Result = ({name, score, category, difficulty, amount}) => {
 
     const goHome = () => {
         navigate('/')
+        setScore(0)
     }
 
     const goLeaderboard = () => {
