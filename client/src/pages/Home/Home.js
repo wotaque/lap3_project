@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { Select, MenuItem, InputLabel, FormControl, Button, Container, TextField } from '@mui/material';
 import {useNavigate} from 'react-router-dom';
 
-const Home = ({setName, fetchQuestions}) => {
+const Home = ({setName, setPlayers, fetchQuestions}) => {
  const [amount, setAmount] = useState("");
  const [difficulty, setDifficulty] = useState("");
  const [category, setCategory] = useState("");
@@ -23,6 +23,15 @@ const navigate = useNavigate();
     <Container style={{ width:200, margin: 'auto' }}>
 
         <FormControl  className="form" margin='normal' >
+
+            <FormControl margin='normal'>
+                <TextField labelId="players-label"
+                            id = "players" 
+                            label="players" 
+                            InputProps={{ inputProps: { min: 0, max: 2 } }}
+                            onChange={(e =>setPlayers(e.target.value))}/>
+            </FormControl>
+           
             <FormControl margin='normal'>
                 <TextField label = "Name" variant = 'outlined' onChange={(e =>setName(e.target.value))} />
             </FormControl>

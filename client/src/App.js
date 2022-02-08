@@ -12,6 +12,7 @@ function App() {
     const [questions, setQuestions] = useState();
     const [score, setScore] = useState(0);
     const [number, setNumber]=useState();
+    const [players, setPlayers] = useState()
     const fetchQuestions = async (amount,  category, difficulty) => {
     
         try{
@@ -32,10 +33,10 @@ function App() {
         <div id="app">
             <h1>Quiz app</h1>
             <Routes>
-                <Route path='/' element={<Home name={name} setName={setName} fetchQuestions={fetchQuestions} />}/>
+                <Route path='/' element={<Home name={name} setName={setName} fetchQuestions={fetchQuestions} setPlayers={setPlayers} />}/>
        
-                <Route path='/quiz' element={<Quiz questions = {questions} score = {score} setScore={setScore} number={number}/>} />
-                <Route path='/result' element={<Result name={name} score={score}/>} />
+                <Route path='/quiz' element={<Quiz questions = {questions} score = {score} setScore={setScore} number={number} players={players}/>} />
+                <Route path='/result' element={<Result name={name} score={score} players={players}/>} />
 
                 <Route path="*" element={<p>nothing here mate</p>}/>
      
