@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { Select, MenuItem, InputLabel, FormControl, Button, Container, TextField } from '@mui/material';
 import {useNavigate} from 'react-router-dom';
 
-const Home = ({setName, fetchQuestions}) => {
+const Home = ({setName, setPlayers, fetchQuestions}) => {
  const [amount, setAmount] = useState("");
  const [difficulty, setDifficulty] = useState("");
  const [category, setCategory] = useState("");
@@ -10,7 +10,6 @@ const Home = ({setName, fetchQuestions}) => {
 const navigate = useNavigate();
 
   const handleSubmit = () => {
-    let name = 
     fetchQuestions(amount,category,difficulty);
     navigate('/quiz');
   };
@@ -27,7 +26,24 @@ const navigate = useNavigate();
  return <div className="FormApp" style={{ width: '100%' }} >
     <Container style={{ width:200, margin: 'auto' }}>
 
-        <FormControl className="form" margin='normal' >
+        <FormControl  className="form" margin='normal' >
+
+             <FormControl margin='normal'>
+                <InputLabel id="player-label">Players</InputLabel>
+                
+                <Select labelId="players-label"
+                        id = "players" 
+                        type = "number"
+                        label = "players" 
+                        onChange={(e =>setPlayers(e.target.value))}>
+
+                    <MenuItem value="0">1</MenuItem>
+                    <MenuItem value="1">2</MenuItem>
+                    <MenuItem value="2">3</MenuItem>
+                    <MenuItem value="3">4</MenuItem>                    
+                </Select>    
+            </FormControl>
+           
             <FormControl margin='normal'>
                 <TextField label = "Name" variant = 'outlined' onChange={(e =>setName(e.target.value))} />
             </FormControl>
