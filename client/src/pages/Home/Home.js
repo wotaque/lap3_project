@@ -65,6 +65,7 @@ const navigate = useNavigate();
                         label="Category" 
                         onChange={handleCategory}
                         
+                        
                 >           
                     <MenuItem value="9">General Knowledge</MenuItem>
                     <MenuItem value="21">Sports</MenuItem>
