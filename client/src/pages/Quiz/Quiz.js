@@ -35,9 +35,7 @@ const Quiz = ({score,questions,setScore,number}) => {
             score={score}
             setScore={setScore}
             number={number}
-            
-          
-          />
+            />
 
             </div>
           ):(<CircularProgress />)
