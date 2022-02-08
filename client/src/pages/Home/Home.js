@@ -1,11 +1,18 @@
 import React, {useState} from 'react';
 import { Select, MenuItem, InputLabel, FormControl, Button, Container, TextField } from '@mui/material';
 import {useNavigate} from 'react-router-dom';
+import RemoveIcon from '@mui/icons-material/Remove';
+import AddIcon from '@mui/icons-material/Add';
+
 
 const Home = ({setName, setPlayers, fetchQuestions}) => {
  const [amount, setAmount] = useState("");
  const [difficulty, setDifficulty] = useState("");
  const [category, setCategory] = useState("");
+ const [ inputFields, setInputFields ] = useState([
+    { firstName: '', lastName: '' },
+ ]);
+ 
  
 const navigate = useNavigate();
 
@@ -23,12 +30,51 @@ const navigate = useNavigate();
   const handleDifficulty = (e) => setDifficulty(e.target.value);
   const handleCategory = (e) => setCategory(e.target.value);
 
- return <div className="FormApp" style={{ width: '100%' }} >
+  const handleChangeInput = (index, event) => {
+      const values = [...inputFields];
+      values[index][event.target.name] = event.target.value;
+      setInputFields(values);
+  }
+
+  const handleAddFields = () => {
+      setInputFields([...inputFields, { firstName: '', lastName: ''}])
+  }
+
+  const handleRemoveInput = (id) => {
+      const values = [...inputFields];
+      values.splice(values.findIndex(value => value.id === id), 1);
+      setInputFields(values);
+  }
+
+ return (
     <Container style={{ width:200, margin: 'auto' }}>
+        <Container>
+          <form>
+                { inputFields.map((inputField, index) => (
+                    <div key={index}>
+                        <TextField 
+                            name="firstName"
+                            label="First Name"
+                            value={inputField.firstName}
+                            onChange={event => handleChangeInput(index, event)}/>
+                        <TextField 
+                            name="lastName"
+                            label="Last Name"
+                            value={inputField.lastName}
+                            onChange={event => handleChangeInput(index, event)}/>  
+                        <RemoveIcon disabled={inputFields.length === 1} onClick={() => handleRemoveInput(inputField.id)}/>
+                        <AddIcon onClick={() => handleAddFields()}/>
+                    </div>
+                ))}
+                
+            </form>
+      </Container>
+
+
 
         <FormControl  className="form" margin='normal' >
 
-             <FormControl margin='normal'>
+             {/* <FormControl margin='normal'>
                 <InputLabel id="player-label">Players</InputLabel>
                 
                 <Select labelId="players-label"
@@ -42,12 +88,15 @@ const navigate = useNavigate();
                     <MenuItem value="2">3</MenuItem>
                     <MenuItem value="3">4</MenuItem>                    
                 </Select>    
-            </FormControl>
-           
-            <FormControl margin='normal'>
-                <TextField label = "Name" variant = 'outlined' onChange={(e =>setName(e.target.value))} />
-            </FormControl>
+            </FormControl> */}
 
+            {/* <FormControl margin='normal'>
+                <TextField label = "Name" variant = 'outlined' onChange={(e =>setName(e.target.value))} />
+                <Button>Add Name</Button>
+            </FormControl> */}
+            
+            
+            
             <FormControl margin='normal'>
                 <TextField labelId="amount-label"
                             id = "amount" 
@@ -101,7 +150,7 @@ const navigate = useNavigate();
     </Container>
 
      
-        </div>
+  )
         
 };
 
