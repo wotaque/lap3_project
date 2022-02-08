@@ -1,0 +1,1 @@
+module.exports = { MongoURI: 'mongodb+srv://tatiana:futureproof@cluster0.6jkna.mongodb.net/test'}
