@@ -37,7 +37,7 @@ const useStyles = makeStyles({
     },
   });
  const classes = useStyles();
- return <div className={classes.root} style={{ width: '100%' }} >
+ return <div id="home" className={classes.root} >
     
     <CssBaseline />
     <Container sx={{ maxWidth: 500 }} style={{ width: 400, margin: 'auto' }}>
