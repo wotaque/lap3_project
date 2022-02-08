@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router';
+import he from 'he';
+
 const Question = ({
     curQues,
     setCurQues,
@@ -45,7 +47,7 @@ const Question = ({
         <h1>Question {curQues + 1}</h1>
 
         <div>
-            <h2>{questions[curQues].question}</h2>
+            <h2>{he.decode(questions[curQues].question)}</h2>
         </div>
 
         <div>
@@ -54,7 +56,7 @@ const Question = ({
                     className={`singleOption ${selected && handleSelect(i)}`}
                     key={i}
                     disabled={selected}
-              >{i}</button>  
+              >{he.decode(i)}</button>  
             ))}
         </div>
 

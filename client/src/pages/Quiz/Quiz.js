@@ -22,7 +22,6 @@ const Quiz = ({score,questions,setScore,number}) => {
       {
           questions ?(<div>
           <div>
-            
               <h1>Score : {score}/{number}</h1>
           </div>
 

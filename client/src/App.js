@@ -32,6 +32,7 @@ function App() {
     return (
         <div id="app">
             <h1>Quiz app</h1>
+
             <Routes>
                 <Route path='/' element={<Home name={name} setName={setName} fetchQuestions={fetchQuestions} />}/>
        
