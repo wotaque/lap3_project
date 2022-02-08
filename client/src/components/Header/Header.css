@@ -1,11 +1,5 @@
-* {
-box-sizing: border-box;
-}
-body {
-margin: 0;
-}
+
 header { 
-  /* inputs location from top  */
 padding-top: 10%;
 background-size: cover;
 font-family: 'Sucrose Bold Two';
@@ -15,7 +9,7 @@ header h1 {
   position: fixed;
   top: 2rem;
   right: 2rem;
-  font-size: 12vw;
+  font-size: 8vw;
   line-height: .8;
   margin-top: 0;
   text-align: center;
@@ -23,19 +17,8 @@ header h1 {
 }
 header h1 span {
   display: block;
-  font-size: 8.75vw;
+  font-size: 5vw;
 }
-/* main paragragh sstyle
-main { 
-  background: #fff;
-  position: relative;
-  border: 1px solid #fff;
-  font-family: 'IM Fell French Canon Pro';
-  font-size: 1.4rem;
-  padding: 2rem 25%;
-  line-height: 1.6;
-} */
 
 @media all and (max-width: 400px) {
-main { padding: 2rem; }
 }
