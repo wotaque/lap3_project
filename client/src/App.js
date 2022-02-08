@@ -3,6 +3,7 @@ import React, { useState, useContext } from 'react';
 import QuizStart from './components/QuizStart';
 import Questions from './components/Questions';
 import { QuizContext } from './Helpers/Contexts';
+import './App.css';
 
 
 function App() {
@@ -10,7 +11,7 @@ function App() {
 
     return (
         <div id="app">
-            <h1>Lap 3 quiz app</h1>
+            <h1>Jest QUIZ</h1>
             <QuizContext.Provider value={{ gameState, setGameState }}>
                 {gameState === "menu" && <QuizStart />}
                 {gameState === "quiz" && <Questions />}

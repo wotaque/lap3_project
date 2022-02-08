@@ -97,4 +97,4 @@ const QuizStart = () => {
     }
 }
 
-export default QuizStart;
+export default QuizStart ;
