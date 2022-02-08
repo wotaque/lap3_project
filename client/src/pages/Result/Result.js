@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router';
 import { Button } from '@mui/material';
 import Axios from 'axios';
 
-const Result = ({name, score, category, difficulty, amount}) => {
+const Result = ({name, score, category, difficulty, amount, setScore}) => {
     const navigate = useNavigate();
 
 
@@ -15,10 +15,29 @@ const Result = ({name, score, category, difficulty, amount}) => {
 
     const goHome = () => {
         navigate('/')
+        setScore(0)
     }
 
     const goLeaderboard = () => {
         navigate('/leaderboard')
+    }
+
+    const categoryNames = (category) => {
+        if (category == 15){
+            return "Video Games"
+        }
+        if(category == 9){
+            return "General Knowledge"
+        }
+        if(category == 21){
+            return "Sports"
+        }
+        if(category == 23){
+            return "History"
+        }
+        if(category == 31){
+            return "Anime and Manga"
+        }
     }
 
   return <div>
@@ -29,7 +48,7 @@ const Result = ({name, score, category, difficulty, amount}) => {
            Final Score: {score}/{amount}
           </div>
           <div>
-              Category: {category}
+              Category: {categoryNames(category)}
           </div>
           <div>
               Difficulty: {difficulty}
