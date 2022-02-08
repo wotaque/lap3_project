@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
-import { Button } from '@mui/material';
+import React, {useState, useEffect} from 'react';
+import { Button, Container, CssBaseline } from '@mui/material';
+
 import { useNavigate } from 'react-router';
 import he from 'he';
 
@@ -19,6 +20,9 @@ const Question = ({
     const [selected, setSelected] = useState()
     //const [error, setError] = useState(false)
 
+
+    const [score1, setScore1] = useState([curPlay,score])
+
     const handleSelect = (i) => {
         if(selected===i && selected===correct ){
             return 'select';
@@ -32,7 +36,13 @@ const Question = ({
     const handleCheck = (i) =>{
         setSelected(i);
         if (i=== correct) setScore(score + 1);
+        console.log(score)
     }
+
+    useEffect(() =>{
+        setScore1([curPlay,score])
+        console.log(score1)
+    },[curPlay,score])
 
     let navigate = useNavigate();
 
@@ -74,9 +84,13 @@ const Question = ({
     //     }
     // }
 
+   
+     return <div  style={{ width: '100%' }} >
+    
+    <CssBaseline />
+    <Container sx={{ maxWidth: 500 }} style={{ width: 400, margin: 'auto' }}>
 
-
-    return <div>
+   
         <h1>Question {curQues + 1}</h1>
 
         <div>
@@ -85,20 +99,24 @@ const Question = ({
 
         <div>
             {choices && choices.map(i =>(
-              <button onClick={() => handleCheck(i)}
+              <Button variant= 'contained' onClick={() => handleCheck(i)}
                     className={`singleOption ${selected && handleSelect(i)}`}
                     key={i}
                     disabled={selected}
-              >{he.decode(i)}</button>  
+              >{he.decode(i)}</Button>  
             ))}
         </div>
 
         <div>
             
-            <Button onClick={handleNextPlayer}>
+            <Button variant='contained' onClick={handleNextPlayer}>
                 Next Player
             </Button>
         </div>
+
+     
+   
+   </Container>
     </div>;
 };
 
