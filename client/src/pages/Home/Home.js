@@ -1,33 +1,34 @@
-import React, {useState, useContext} from 'react';
-import { QuizContext } from '../Helpers/Contexts';
-import axios from "axios";
-import { Select, MenuItem, InputLabel, FormControl, Button, Container } from '@mui/material';
+import React, {useState} from 'react';
+import { Select, MenuItem, InputLabel, FormControl, Button, Container, TextField } from '@mui/material';
+import {useNavigate} from 'react-router-dom';
 
-const QuizStart = () => {
+const Home = ({name, setName, fetchQuestions}) => {
  const [amount, setAmount] = useState("");
  const [difficulty, setDifficulty] = useState("");
  const [category, setCategory] = useState("");
+ 
+const navigate = useNavigate();
 
- const { gameState, setGameState } = useContext(QuizContext);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setAmount(amount);
-    setDifficulty(difficulty);
-    setCategory(category);
+  const handleSubmit = () => {
+   
+    fetchQuestions(amount,category,difficulty);
+    navigate('/quiz');
+    console.log("Hello");
   };
 
   const handleAmount = (e) => setAmount(e.target.value);
   const handleDifficulty = (e) => setDifficulty(e.target.value);
   const handleCategory = (e) => setCategory(e.target.value);
- 
- 
- 
+
  return <div className="FormApp" style={{ width: '100%' }} >
             <Container style={{ width:200, margin: 'auto' }}>
-            <FormControl onSubmit={handleSubmit} className="form" margin='normal' >
+            <FormControl  className="form" margin='normal' >
                 
+                <InputLabel id="name-label"></InputLabel>
+
+                <TextField label = "Name" variant = 'outlined' onChange={(e =>setName(e.target.value))} />
                 
+
                 <FormControl margin='normal'>
                 <InputLabel id="amount-label">Amount</InputLabel>
                     <Select labelId="amount-label"
@@ -73,28 +74,21 @@ const QuizStart = () => {
                     <MenuItem value="23">History</MenuItem>
                     <MenuItem value="31">Anime & Manga</MenuItem>
                 </Select>   
-
-
-                <Button onClick={() => getQuiz([amount, difficulty, category]) && setGameState("quiz")} variant="contained" type="submit" value="Start Quiz" >Start Quiz</Button>
+                </FormControl>
+                <FormControl  margin='normal'>
+                <Button onClick={handleSubmit} variant="contained" value="Start Quiz" >Start Quiz</Button>
 
                 </FormControl>
               
             </FormControl>
             </Container>
-        
+     
         </div>
         
 };
 
-    export async function getQuiz([amount, difficulty, category]) {
-    try{
-    let { data } = await axios.get(`https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=multiple`)  
-    // console.log(data)
-    return { data }
 
-    }catch(error){
-        throw error
-    }
-}
 
-export default QuizStart;
+
+
+export default Home;
