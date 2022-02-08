@@ -35,7 +35,7 @@ function App() {
     
 
     return (
-        <div id="app" style={{ backgroundImage: 'url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/mountain-range.jpg)' }}>
+        <div id="app" >
             <h1>Quiz app</h1>
 
             <Routes>
