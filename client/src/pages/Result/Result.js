@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
-import { Button } from '@mui/material';
+import { Button, Container, TextField, CssBaseline, Paper } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import Axios from 'axios';
 
 const Result = ({name, score, category, difficulty, amount, setScore}) => {
@@ -40,7 +41,26 @@ const Result = ({name, score, category, difficulty, amount, setScore}) => {
         }
     }
 
-  return <div>
+    const useStyles = makeStyles({
+        paperRoot: {
+          background: 'linear-gradient(45deg, #A0D2EB 30%, #D0BDF4 90%)',
+          border: 0,
+          borderRadius: 3,
+          boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+          color: 'white',
+        
+        },
+      });
+     const classes = useStyles();
+     return <div className={classes.root} style={{ width: '100%' }} >
+        
+        <CssBaseline />
+        <Container sx={{ maxWidth: 500 }} style={{ width: 400, margin: 'auto' }}>
+    
+        <Paper className={classes.paperRoot}
+          component="form"
+          sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
+        >
       <h2>Result</h2>
       <div>
           Name: {name} 
@@ -59,7 +79,11 @@ const Result = ({name, score, category, difficulty, amount, setScore}) => {
           <Button onClick={handlePost}>Post Score</Button>
           <Button onClick={goLeaderboard}>Leaderboard</Button>
       </div>
-
+            
+    </Paper>
+   
+   </Container>
+   
     </div>;
 };
 
