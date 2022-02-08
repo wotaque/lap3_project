@@ -23,19 +23,19 @@ const Result = ({name, score, category, difficulty, amount, setScore}) => {
     }
 
     const categoryNames = (category) => {
-        if (category === 15){
+        if (category == 15){
             return "Video Games"
         }
-        if(category === 9){
+        if(category == 9){
             return "General Knowledge"
         }
-        if(category === 21){
+        if(category == 21){
             return "Sports"
         }
-        if(category === 23){
+        if(category == 23){
             return "History"
         }
-        if(category === 31){
+        if(category == 31){
             return "Anime and Manga"
         }
     }
