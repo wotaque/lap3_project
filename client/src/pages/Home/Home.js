@@ -15,6 +15,11 @@ const navigate = useNavigate();
     navigate('/quiz');
   };
 
+  const handleScores = () => {
+    navigate('/leaderboard')
+    console.log("Going to leaderboards")
+  }
+
   const handleAmount = (e) => setAmount(e.target.value);
   const handleDifficulty = (e) => setDifficulty(e.target.value);
   const handleCategory = (e) => setCategory(e.target.value);
@@ -69,6 +74,7 @@ const navigate = useNavigate();
                         label="Category" 
                         onChange={handleCategory}
                         
+                        
                 >           
                     <MenuItem value="9">General Knowledge</MenuItem>
                     <MenuItem value="21">Sports</MenuItem>
@@ -77,12 +83,16 @@ const navigate = useNavigate();
                     <MenuItem value="31">Anime & Manga</MenuItem>
                 </Select>   
             </FormControl>
+
+            <Button fullwidth variant="contained" onClick={handleScores}>Leaderboard</Button>
+            
             <FormControl  margin='normal'>
                 <Button onClick={handleSubmit} variant="contained" value="Start Quiz" >Start Quiz</Button>
             </FormControl>
               
         </FormControl>
     </Container>
+
      
         </div>
         

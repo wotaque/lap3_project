@@ -8,6 +8,18 @@ const UserSchema = new mongoose.Schema({
     score: {
         type: Number,
         required: true
+    },
+    category: {
+        type: String,
+        required: true
+    },
+    amount: {
+        type: Number,
+        required: true
+    },
+    difficulty: {
+        type: String,
+        required: true
     }
 })
 

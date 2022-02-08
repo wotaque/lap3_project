@@ -3,6 +3,6 @@ const cors = require('cors');
 
 app.use(cors());
 
-const port = process.env.PORT || 3000;
+const port = 3001;
 
 app.listen(port, () => console.log(`Express is listening to ${port}`));
