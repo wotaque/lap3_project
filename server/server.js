@@ -10,7 +10,7 @@ server.use(express.json());
 const userRoutes = require('./controllers/users');
 
 server.use('/', userRoutes);
-server.get('/', (req, res) => res.send('Hello Tatiana!'))
+server.get('/', (req, res) => res.send('Hello Tatiana'))
 
 //Connect to Mongo
 mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })

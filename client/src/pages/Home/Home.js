@@ -15,6 +15,11 @@ const navigate = useNavigate();
     navigate('/quiz');
   };
 
+  const handleScores = () => {
+    navigate('/leaderboard')
+    console.log("Going to leaderboards")
+  }
+
   const handleAmount = (e) => setAmount(e.target.value);
   const handleDifficulty = (e) => setDifficulty(e.target.value);
   const handleCategory = (e) => setCategory(e.target.value);
@@ -22,7 +27,7 @@ const navigate = useNavigate();
  return <div className="FormApp" style={{ width: '100%' }} >
     <Container style={{ width:200, margin: 'auto' }}>
 
-        <FormControl  className="form" margin='normal' >
+        <FormControl className="form" margin='normal' >
             <FormControl margin='normal'>
                 <TextField label = "Name" variant = 'outlined' onChange={(e =>setName(e.target.value))} />
             </FormControl>
@@ -68,12 +73,16 @@ const navigate = useNavigate();
                     <MenuItem value="31">Anime & Manga</MenuItem>
                 </Select>   
             </FormControl>
+
+            <Button fullwidth variant="contained" onClick={handleScores}>Leaderboard</Button>
+            
             <FormControl  margin='normal'>
                 <Button onClick={handleSubmit} variant="contained" value="Start Quiz" >Start Quiz</Button>
             </FormControl>
               
         </FormControl>
     </Container>
+
      
         </div>
         
