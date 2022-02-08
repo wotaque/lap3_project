@@ -25,6 +25,7 @@ const Result = ({name,score}) => {
            Final Score : {score}
           </div>
           <Button onClick={goHome}>Home</Button>
+          <Button onClick={handlePost}>Post Score</Button>
       </div>
 
     </div>;
