@@ -6,6 +6,7 @@ import axios from 'axios';
 import Home from './pages/Home/Home';
 import Quiz from './pages/Quiz/Quiz';
 import Result from './pages/Result/Result';
+import Leaderboard from './pages/Leaderboard/Leaderboard';
 
 function App() {
     const [name, setName] = useState("")
@@ -36,6 +37,7 @@ function App() {
        
                 <Route path='/quiz' element={<Quiz questions = {questions} score = {score} setScore={setScore} number={number}/>} />
                 <Route path='/result' element={<Result name={name} score={score}/>} />
+                <Route path='/leaderboard' element={<Leaderboard name={name} score={score} />} />
 
                 <Route path="*" element={<p>nothing here mate</p>}/>
      

@@ -16,6 +16,11 @@ const navigate = useNavigate();
     console.log("Hello");
   };
 
+  const handleScores = () => {
+    navigate('/leaderboard')
+    console.log("Going to leaderboards")
+  }
+
   const handleAmount = (e) => setAmount(e.target.value);
   const handleDifficulty = (e) => setDifficulty(e.target.value);
   const handleCategory = (e) => setCategory(e.target.value);
@@ -81,6 +86,7 @@ const navigate = useNavigate();
                 </FormControl>
               
             </FormControl>
+            <Button fullwidth variant="contained" onClick={handleScores}>Leaderboard</Button>
             </Container>
      
         </div>

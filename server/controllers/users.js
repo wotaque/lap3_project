@@ -6,21 +6,28 @@ const User = require('../models/User');
 router.use(cors());
 
 // Get highscores route
-router.get('/leaderboard', (req, res) => async (req, res) => {
-    try {
-        const users = await User.all;
-        res.json({users})
-    } catch (err) {
-        res.status(500).json({err})
-    }
+router.get("/leaderboard", async (req, res) => {
+    User.find({}, (err, result) => {
+        if (err) {
+            res.send(err)
+        }
+        
+        res.send(result);
+    })
 })
 
 // Posting highscores
-router.post('/highscore', async (req, res) => {
-    const user = req.body; 
-    const newUser = new User(user);
-    await newUser.save();
-    res.json(user)
+router.post('/insert', async (req, res) => {
+    const name = req.body.name; 
+    const score = req.body.score;
+
+    const user = new User({ name: name, score: score })
+    try {
+        await user.save();
+        res.send("Inserted new highscore")
+    } catch (err) {
+        console.log(err);
+    }
 });
 
 
