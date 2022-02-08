@@ -1,0 +1,25 @@
+nav {
+    width: 100%;
+    background-color: var(--primary);
+    padding: 25px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+a { 
+    color: var(--opacity);
+    text-decoration: none;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+a:hover { 
+    font-weight: 800;
+    color: white;
+}
+
+.active {
+    color: white;
+}
+
+.home-link { color: wheat; }

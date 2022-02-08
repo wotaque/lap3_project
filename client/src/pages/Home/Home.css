@@ -1,0 +1,126 @@
+.form-container1 {
+    text-align:center;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    width: 40%; 
+    height: 60%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4);
+    color: white;
+    left: 30%;
+    top: 20%;
+    box-shadow: 1px 1px 6px rgb(37, 37, 37);
+    border-radius: 5px;
+}
+
+.form-container1 h2 {
+    font-size: 2.5rem;
+    margin-top: 5px;
+}
+
+/*username section*/
+.username-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.username-section label{
+    font-size: 1.9rem;
+    margin-top: -15px;
+}
+
+.username-section input{
+    font-size: 1.3rem;
+    background-color: rgba(255, 255, 255, 0.808);
+    border: 1px solid rosybrown;
+    border-radius: 10px;
+    color: black;
+    width: 50%;
+    margin: auto;
+    padding-left: 10px;
+}
+
+.username-section input:focus {
+    outline: none;
+}
+
+/*category section*/
+
+.category-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.category-section label{
+    font-size: 1.9rem;
+    margin-top: 5px;
+}
+
+.category-section select{
+    font-size: 1.1rem;
+    margin-top: 5px;
+    width: 52%;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.808);
+    color: black;
+    border-radius: 10px;
+    border-color: rosybrown;
+    height: 30px;
+    padding-left: 7px;
+}
+
+.category-section select:focus {
+    outline: none;
+}
+
+/*difficulty section*/
+
+.difficulty-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.difficulty-section label{
+    font-size: 1.7rem;
+    margin-top: 5px;
+}
+
+.difficulty-section select{
+    font-size: 1.1rem;
+    margin-top: 5px;
+    width: 52%;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.808);
+    color: black;
+    border-radius: 10px;
+    border-color: rosybrown;
+    height: 30px;
+    padding-left: 7px;
+}
+
+.difficulty-section select:focus {
+    outline: none;
+}
+
+
+.createGame-btn {
+    padding: 10px 10px;
+    background-color:#494D5F;
+    width: 200px;
+    border-radius: 30px;
+    border-color: #8458B3;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: #8458B3;
+}
+
+.createGame-btn:hover {
+    cursor: pointer;
+    background-color: #a0d2eb;
+    /* box-shadow: 0 0.4rem 1.4rem 0  #3b2166b2; */
+    transform:  scale(1.05);
+    transform: transform 100ms;
+    color: #8458B3;
+}
+  

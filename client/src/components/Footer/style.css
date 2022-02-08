@@ -1,0 +1,18 @@
+/* client-two */
+footer {
+    width: 100vw;
+    height: 15px;
+    background-color: #8458B3;
+    padding: 20px;
+    position: absolute;
+    bottom: 0;
+    z-index: 0;
+    
+}
+/* client-two */
+h1 {
+    font-size: 22px;
+    color: #a0d2eb;
+    text-align: center;
+    margin: auto;
+}
