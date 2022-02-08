@@ -2,16 +2,21 @@ import { CircularProgress } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import Question from '../../components/Question/Question';
 
-const Quiz = ({score,questions,setScore,number}) => {
+const Quiz = ({score,questions,setScore,number,players}) => {
 
     const [choices, setChoices] = useState()
     const [curQues , setCurQues] = useState(0)
+    const [curPlay, setCurPlay] = useState(1)
      
   useEffect(()=>{
     //console.log(questions)
     setChoices(questions && handleShuffle([questions[curQues]?.correct_answer, ...questions[curQues]?.incorrect_answers,])
                                           );
-  },[questions,curQues ]);  
+  },[questions,curQues]); 
+  
+  // useEffect(()=>{
+  //   setCurPlay(curPlay) 
+  // },[curPlay, setCurPlay])
 
   //console.log(choices)
   //shuffle answers
@@ -22,7 +27,8 @@ const Quiz = ({score,questions,setScore,number}) => {
       {
           questions ?(<div>
           <div>
-              <h1>Score : {score}/{number}</h1>
+              {/* <h1>Score : {score}/{number}</h1> */}
+              <h1>Player:{curPlay}</h1>
           </div>
 
           <Question 
@@ -34,7 +40,11 @@ const Quiz = ({score,questions,setScore,number}) => {
             score={score}
             setScore={setScore}
             number={number}
-            />
+            players={players}
+            curPlay={curPlay}
+            setCurPlay={setCurPlay}
+          
+          />
 
             </div>
           ):(<CircularProgress />)
