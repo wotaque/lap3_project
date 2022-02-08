@@ -11,8 +11,8 @@ import Leaderboard from './pages/Leaderboard/Leaderboard';
 function App() {
     const [name, setName] = useState("")
     const [questions, setQuestions] = useState();
-    const[score, setScore] = useState(0);
-    const[number, setNumber]=useState();
+    const [score, setScore] = useState(0);
+    const [number, setNumber]=useState();
     const fetchQuestions = async (amount,  category, difficulty) => {
     
         try{

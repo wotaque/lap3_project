@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { Select, MenuItem, InputLabel, FormControl, Button, Container, TextField } from '@mui/material';
 import {useNavigate} from 'react-router-dom';
 
-const Home = ({name, setName, fetchQuestions}) => {
+const Home = ({setName, fetchQuestions}) => {
  const [amount, setAmount] = useState("");
  const [difficulty, setDifficulty] = useState("");
  const [category, setCategory] = useState("");
@@ -13,7 +13,6 @@ const navigate = useNavigate();
    
     fetchQuestions(amount,category,difficulty);
     navigate('/quiz');
-    console.log("Hello");
   };
 
   const handleScores = () => {
@@ -26,29 +25,23 @@ const navigate = useNavigate();
   const handleCategory = (e) => setCategory(e.target.value);
 
  return <div className="FormApp" style={{ width: '100%' }} >
-            <Container style={{ width:200, margin: 'auto' }}>
-            <FormControl  className="form" margin='normal' >
-                
-                <InputLabel id="name-label"></InputLabel>
+    <Container style={{ width:200, margin: 'auto' }}>
 
+        <FormControl className="form" margin='normal' >
+            <FormControl margin='normal'>
                 <TextField label = "Name" variant = 'outlined' onChange={(e =>setName(e.target.value))} />
-                
+            </FormControl>
 
-                <FormControl margin='normal'>
-                <InputLabel id="amount-label">Amount</InputLabel>
-                    <Select labelId="amount-label"
+            <FormControl margin='normal'>
+                <TextField labelId="amount-label"
                             id = "amount" 
                             
                             value={amount}
                             label="Amount" 
-                            onChange={handleAmount}
-                            
-                    >           
-                        <MenuItem value="10">10</MenuItem>
-                        <MenuItem value="5">5</MenuItem>
-                    </Select>     
-               </FormControl>
-               <FormControl margin='normal'>
+                            onChange={handleAmount}/>
+            </FormControl>
+            
+            <FormControl margin='normal'>
                 <InputLabel id="difficulty-label">Difficulty</InputLabel>
                 
                 <Select labelId="difficulty-label"
@@ -63,7 +56,7 @@ const navigate = useNavigate();
                     <MenuItem value="hard">Hard</MenuItem>                
                 </Select>     
                 </FormControl>
-                <FormControl margin='normal'>
+            <FormControl margin='normal'>
                 <InputLabel id="category-label">Category</InputLabel>
                 
                 <Select labelId="category-label"
@@ -79,15 +72,17 @@ const navigate = useNavigate();
                     <MenuItem value="23">History</MenuItem>
                     <MenuItem value="31">Anime & Manga</MenuItem>
                 </Select>   
-                </FormControl>
-                <FormControl  margin='normal'>
-                <Button onClick={handleSubmit} variant="contained" value="Start Quiz" >Start Quiz</Button>
-
-                </FormControl>
-              
             </FormControl>
+
             <Button fullwidth variant="contained" onClick={handleScores}>Leaderboard</Button>
-            </Container>
+            
+            <FormControl  margin='normal'>
+                <Button onClick={handleSubmit} variant="contained" value="Start Quiz" >Start Quiz</Button>
+            </FormControl>
+              
+        </FormControl>
+    </Container>
+
      
         </div>
         
