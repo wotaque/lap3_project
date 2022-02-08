@@ -10,7 +10,6 @@ const Home = ({setName, setPlayers, fetchQuestions}) => {
 const navigate = useNavigate();
 
   const handleSubmit = () => {
-   
     fetchQuestions(amount,category,difficulty);
     navigate('/quiz');
   };

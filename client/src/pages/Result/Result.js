@@ -22,6 +22,24 @@ const Result = ({name, score, category, difficulty, amount, setScore}) => {
         navigate('/leaderboard')
     }
 
+    const categoryNames = (category) => {
+        if (category == 15){
+            return "Video Games"
+        }
+        if(category == 9){
+            return "General Knowledge"
+        }
+        if(category == 21){
+            return "Sports"
+        }
+        if(category == 23){
+            return "History"
+        }
+        if(category == 31){
+            return "Anime and Manga"
+        }
+    }
+
   return <div>
       <h2>Result</h2>
       <div>
@@ -30,7 +48,7 @@ const Result = ({name, score, category, difficulty, amount, setScore}) => {
            Final Score: {score}/{amount}
           </div>
           <div>
-              Category: {category}
+              Category: {categoryNames(category)}
           </div>
           <div>
               Difficulty: {difficulty}
