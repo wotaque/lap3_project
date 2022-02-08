@@ -13,7 +13,10 @@ function App() {
     const [questions, setQuestions] = useState();
     const [score, setScore] = useState(0);
     const [number, setNumber]=useState();
-    const fetchQuestions = async (amount,  category, difficulty) => {
+    const [category, setCategory] = useState("");
+    const [difficulty, setDifficulty] = useState("")
+    const [amount, setAmount] = useState()
+    const fetchQuestions = async (amount, category, difficulty) => {
     
         try{
         let url = (`https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=multiple`)    
@@ -22,7 +25,9 @@ function App() {
    
         setQuestions(data.results)
         setNumber(amount)
-        
+        setCategory(category)
+        setDifficulty(difficulty)
+        setAmount(amount)
         }catch(error){
             throw error
         }
@@ -33,11 +38,13 @@ function App() {
         <div id="app">
             <h1>Quiz app</h1>
             <Routes>
-                <Route path='/' element={<Home name={name} setName={setName} fetchQuestions={fetchQuestions} />}/>
+                <Route path='/' element={<Home name={name} setName={setName} category={category} difficulty={difficulty} fetchQuestions={fetchQuestions} />}/>
        
                 <Route path='/quiz' element={<Quiz questions = {questions} score = {score} setScore={setScore} number={number}/>} />
-                <Route path='/result' element={<Result name={name} score={score}/>} />
-                <Route path='/leaderboard' element={<Leaderboard name={name} score={score} />} />
+
+                <Route path='/result' element={<Result name={name} score={score} category={category} amount={amount} difficulty={difficulty}/>} />
+                
+                <Route path='/leaderboard' element={<Leaderboard name={name} score={score} category={category} difficulty={difficulty} />} />
 
                 <Route path="*" element={<p>nothing here mate</p>}/>
      
