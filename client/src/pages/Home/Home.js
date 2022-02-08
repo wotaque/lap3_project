@@ -9,7 +9,7 @@ import {useNavigate} from 'react-router-dom';
 import "./Home.css";
 
 
-const Home = ({name, setName, fetchQuestions}) => {
+const Home = ({setName, setPlayers, fetchQuestions}) => {
     const [amount, setAmount] = useState("");
     const [difficulty, setDifficulty] = useState("");
     const [category, setCategory] = useState("");
@@ -34,6 +34,11 @@ const Home = ({name, setName, fetchQuestions}) => {
             // }
         };
 
+        const handleScores = () => {
+            navigate('/leaderboard')
+            console.log("Going to leaderboards")
+          }
+
     const handleAmount = (e) => setAmount(e.target.value);
     const handleDifficulty = (e) => setDifficulty(e.target.value);
     const handleCategory = (e) => setCategory(e.target.value);
@@ -43,6 +48,23 @@ const Home = ({name, setName, fetchQuestions}) => {
         {/*error && <ErrorMessage>Missed something... </ErrorMessage>*/}
 
         <form aria-label="form">
+
+
+            <div className="category-section">
+            <label htmlFor="player-label" id="player-label">Number of Players:</label>
+                
+                <select labelId="players-label"
+                        id = "players" 
+                        type = "number"
+                        label = "players" 
+                        onChange={(e =>setPlayers(e.target.value))}>
+
+                    <option value="0">1</option>
+                    <option value="1">2</option>
+                    <option value="2">3</option>
+                    <option value="3">4</option>                    
+                </select>    
+            </div>
 
             <div className="username-section">
                 <label htmlFor="name">Enter your Name</label>
@@ -86,7 +108,6 @@ const Home = ({name, setName, fetchQuestions}) => {
                 </select>
             </div>
 
-            <br></br>
             <div className="difficulty-section">
                 <label htmlFor="difficulty">Number of Questions:</label>
                 <select
@@ -102,7 +123,10 @@ const Home = ({name, setName, fetchQuestions}) => {
                 </select>
             </div>
 
-            <br></br>
+            <div className="createGame-btnForm">
+            <button fullwidth variant="contained" onClick={handleScores}>Leaderboard</button>
+            </div>
+
 
             <div className="createGame-btnForm">
                 <button className="createGame-btn" onClick={handleSubmit}>Start Game</button>
