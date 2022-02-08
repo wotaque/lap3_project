@@ -17,6 +17,10 @@ const Result = ({name, score, category, difficulty, amount}) => {
         navigate('/')
     }
 
+    const goLeaderboard = () => {
+        navigate('/leaderboard')
+    }
+
   return <div>
       <h2>Result</h2>
       <div>
@@ -34,6 +38,7 @@ const Result = ({name, score, category, difficulty, amount}) => {
           
           <Button onClick={goHome}>Home</Button>
           <Button onClick={handlePost}>Post Score</Button>
+          <Button onClick={goLeaderboard}>Leaderboard</Button>
       </div>
 
     </div>;
