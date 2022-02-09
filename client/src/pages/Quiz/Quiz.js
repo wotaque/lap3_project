@@ -1,13 +1,13 @@
-import { CircularProgress } from '@mui/material';
+import { CircularProgress, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import Question from '../../components/Question/Question';
 import { Container, CssBaseline, Paper } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-const Quiz = ({score,questions,setScore,number,players}) => {
+const Quiz = ({score,questions,setScore,number,players,inputFields}) => {
 
     const [choices, setChoices] = useState()
     const [curQues , setCurQues] = useState(0)
-    const [curPlay, setCurPlay] = useState(1)
+    const [curPlay, setCurPlay] = useState()
      
   useEffect(()=>{
     //console.log(questions)
@@ -37,6 +37,8 @@ const Quiz = ({score,questions,setScore,number,players}) => {
   });
  const classes = useStyles();
 
+ console.log(inputFields)
+
   return <div className={classes.root} style={{ width: '100%' }} >
      
      <CssBaseline />
@@ -51,11 +53,23 @@ const Quiz = ({score,questions,setScore,number,players}) => {
      
       {
           questions ?(<div>
-          <div>
-              {/* <h1>Score : {score}/{number}</h1> */}
-              <h1>Player:{curPlay}</h1>
-          </div>
+          {/* <div>
+          Player:{inputFields.map((inputField, index) => (
+                    <div key={index}>
+                      <Typography 
+                            name="username"
+                            value={inputField.username}
+                      />
+                    </div>
+                ))}
+              
+          </div> */}
 
+          <div>
+            Player: {inputFields.map((inputField, index) => (
+              <div key={index}>{inputField[index].username}</div>
+            ))}
+          </div>
           <Question 
             curQues={curQues}
             setCurQues={setCurQues}

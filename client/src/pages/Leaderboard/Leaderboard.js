@@ -51,16 +51,19 @@ const Leaderboard = () => {
   return <div className={classes.root}>
       
       <Button variant="contained" onClick={goHome}>Home</Button>
-      <Typography variant="h4" gutterBottom={true}>
-          Leaderboard
-      </Typography>
-      <Paper elevation={3} style={{padding:8, color:"black"}} className={classes.paperRoot}>
+      <Paper className={classes.paperRoot}>
+        <Typography variant="h3" gutterBottom={true} align="center">
+            Leaderboard
+        </Typography>
+      </Paper>
+      
+      <Paper elevation={3} style={{padding:20, color:"black"}} className={classes.paperRoot}>
             {userScore.map((val, key) => {
             return <div key={key}> 
-            <Typography variant="h5">Username: {val.name}</Typography> 
+            <Typography variant="h4">Username: {val.name}</Typography> 
             <Typography variant="h6">Score: {val.score}/{val.amount}</Typography>
-            <Typography>Difficulty: {val.difficulty}</Typography>
-            <Typography>Category: {categoryNames(val.category)}</Typography>
+            <Typography variant="h6"> Difficulty: {val.difficulty}</Typography>
+            <Typography variant="h6">Category: {categoryNames(val.category)}</Typography>
             </div>
         })} 
       </Paper>
