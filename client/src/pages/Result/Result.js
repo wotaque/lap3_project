@@ -3,11 +3,13 @@ import { useNavigate } from 'react-router';
 import { Button, Container, TextField, CssBaseline, Paper } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import Axios from 'axios';
+import { display } from '@mui/system';
+import { ComponentPropsToStylePropsMapKeys } from '@aws-amplify/ui-react';
 
 const Result = ({inputFields, score, category, difficulty, amount, setScore}) => {
     const navigate = useNavigate();
 
-
+    var numPlayer = inputFields.length;
     const handlePost = (e) => {
         e.preventDefault();
         Axios.post("http://localhost:3001/insert", {name: inputFields, score: score, category: category, amount: amount, difficulty: difficulty});
@@ -53,10 +55,20 @@ const Result = ({inputFields, score, category, difficulty, amount, setScore}) =>
       });
      const classes = useStyles();
 
+     console.log(score)
+
      const resultName = () => {
-         for(let i=0; i<)
+        let displayResultName = []
+         for(let i = 0; i < numPlayer; i++){
+             displayResultName.push(<div>Name: {inputFields[i].username} <br />
+             Score: </div>
+            )
+         }
+         return displayResultName
      }
 
+     
+     console.log(resultName())
      return <div className={classes.root} style={{ width: '100%' }} >
         
         <CssBaseline />
@@ -67,8 +79,10 @@ const Result = ({inputFields, score, category, difficulty, amount, setScore}) =>
           sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
         >
       <h2>Result</h2>
-      <div>
-          Name: {inputFields[0].username} 
+        <div>
+            <div>
+                {resultName()} 
+            </div>
           <div>
            Final Score: {score}/{amount}
           </div>
