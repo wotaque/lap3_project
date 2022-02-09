@@ -76,7 +76,9 @@ const navigate = useNavigate();
       sx={{ p: '2px 4px', display: 'flex', alignItems: 'center' }}
     >
 
+
         <FormControl  className="form" margin='normal' style={{  margin: 'auto' }}  >
+
 
              
                 
@@ -103,7 +105,6 @@ const navigate = useNavigate();
                     </div>
                 ))}
            
-
             <FormControl margin='normal'  >
                 <TextField labelid="amount-label"
                         
@@ -123,8 +124,6 @@ const navigate = useNavigate();
                         value={difficulty}
                         label="Difficulty" 
                         onChange={handleDifficulty}
-                        
-                        
                 >           
                     <MenuItem value="easy">Easy</MenuItem>
                     <MenuItem value="medium">Medium</MenuItem>
@@ -139,8 +138,6 @@ const navigate = useNavigate();
                         value={category}
                         label="Category" 
                         onChange={handleCategory}
-                         
-                        
                 >           
                     <MenuItem value="9">General Knowledge</MenuItem>
                     <MenuItem value="21">Sports</MenuItem>
@@ -150,8 +147,6 @@ const navigate = useNavigate();
                 </Select>   
             </FormControl>
 
-            
-            
             <FormControl  margin='normal'>
                 <Button color="secondary" variant="contained" onClick={handleSubmit} value="Start Quiz" >Start Quiz</Button>
             </FormControl>

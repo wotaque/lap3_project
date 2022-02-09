@@ -65,14 +65,6 @@ const Quiz = ({score,questions,setScore,number,inputFields}) => {
   }
  }
 
-
-
- console.log(numPlayer)
-
-
-
-
-
   return <Parent className={classes.root}>
      
     <CssBaseline />
@@ -110,7 +102,6 @@ const Quiz = ({score,questions,setScore,number,inputFields}) => {
 
           
         }    
-
 
       </Paper>
    

@@ -50,7 +50,7 @@ const Question = ({
     useEffect(() =>{
         setUserScore([{
             username: curPlay,
-            score: score}])
+            score: userScore}])
        
     },[curPlay, score])
          console.log(score)
