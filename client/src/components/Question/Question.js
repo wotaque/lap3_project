@@ -4,6 +4,10 @@ import { Button, Container, CssBaseline, Grid } from '@mui/material';
 import { useNavigate } from 'react-router';
 import he from 'he';
 
+import { CustomTheme } from './muiTheme'; 
+import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
+
+
 const Question = ({
     curQues,
     setCurQues,
@@ -109,12 +113,17 @@ const Question = ({
             ))}
         </div>
 
-        <div>
-            
-            <Button variant='contained' onClick={handleNextPlayer}>
+        
+        <Grid container justifyContent="flex-end">
+ 
+            <Button variant='contained' color='secondary' 
+            endIcon={<DoubleArrowIcon />}
+            style={{fontSize: 20, height: 40 }}
+            onClick={handleNextPlayer} 
+            >
                 Next
             </Button>
-        </div>
+        </Grid>
 
      
    
