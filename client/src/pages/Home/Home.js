@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
-import { Select, MenuItem, InputLabel, FormControl, Button, Container, TextField, CssBaseline, Paper, FormGroup, Grid } from '@mui/material';
+import { Select, MenuItem, InputLabel, FormControl, Button, Container, TextField, CssBaseline, Paper, Grid } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import {useNavigate} from 'react-router-dom';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
+import Parent from './bgTheme.js'
 
 
-const Home = ({setName, setPlayers, fetchQuestions, players, inputFields, setInputFields}) => {
+
+const Home = ({fetchQuestions, inputFields, setInputFields}) => {
  const [amount, setAmount] = useState("");
  const [difficulty, setDifficulty] = useState("");
  const [category, setCategory] = useState("");
@@ -64,24 +66,26 @@ const navigate = useNavigate();
 
 
 
- return <div id="home" className={classes.root}  style={{ width: '100%' }}  >
+ return <Parent id="home" className={classes.root}  >
    
     <CssBaseline />
-    <Container style={{  margin: 'auto' }}>
+    <Container sx={{ maxWidth: 500 }} style={{ width: 400, margin: 'auto' }}>
 
     <Paper className={classes.paperRoot}
       component="form"
       sx={{ p: '2px 4px', display: 'flex', alignItems: 'center' }}
     >
 
-        <FormControl  className="form" margin='normal' style={{  margin: 'auto' }}>
+
+        <FormControl  className="form" margin='normal' style={{  margin: 'auto' }}  >
+
 
              
                 
                 { inputFields.map((inputField, index) => (
                     <div key={index}>
                     
-                       <FormControl margin='normal' color="secondary" sx={{ minWidth: 1000 }} >
+                       <FormControl margin='normal' color="secondary" sx={{ minWidth: 400 }} >
                        
                        <Grid container spacing={0}>
                        <Grid item xs={4}>
@@ -107,7 +111,7 @@ const navigate = useNavigate();
                             id = "amount" 
                             color="secondary"
                             value={amount}
-                            type="number"
+                            
                             label="Number of Questions" 
                             onChange={handleAmount}/>
             </FormControl>
@@ -155,7 +159,7 @@ const navigate = useNavigate();
     </Container>
     
      
-    </div>
+    </Parent>
 };
 
 

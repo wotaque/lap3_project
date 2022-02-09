@@ -1,11 +1,9 @@
 import { CircularProgress } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import Question from '../../components/Question/Question';
-import CustomTheme from './muiTheme';
-import SupportIcon from '@mui/icons-material/Support';
 import { makeStyles } from '@mui/styles';
-import { Container, CssBaseline, Paper, ThemeProvider, Card } from '@mui/material';
-import Link from '@mui/material/Link';
+import { Container, CssBaseline, Paper } from '@mui/material';
+
 import Parent from './bgTheme'
 
 const Quiz = ({score,questions,setScore,number,inputFields}) => {
@@ -98,15 +96,6 @@ const Quiz = ({score,questions,setScore,number,inputFields}) => {
           
           />
           
-      
-            {/* <Link href="https://www.wikipedia.org/"
-            rel="noreferrer"
-            target="_blank"
-            id="tweet-quote">
-            <SupportIcon 
-            style={{fontSize: 40 }}
-            />
-          </Link> */}
           </div>
           
           ):(<CircularProgress />)

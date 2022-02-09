@@ -4,7 +4,6 @@ import { Button, Container, CssBaseline, Paper } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import Axios from 'axios';
 
-
 const Result = ({inputFields, score, category, difficulty, amount, setScore}) => {
     const navigate = useNavigate();
 

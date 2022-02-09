@@ -12,7 +12,6 @@ import "./App.css";
 
 
 function App() {
-    const [name, setName] = useState("")
     const [questions, setQuestions] = useState();
     const [score, setScore] = useState(0);
     const [number, setNumber]=useState();
@@ -53,7 +52,7 @@ function App() {
 
                 <Route path='/result' element={<Result score={score} category={category} amount={amount} difficulty={difficulty} players={players} setScore={setScore} inputFields={inputFields}/>} />
                 
-                <Route path='/leaderboard' element={<Leaderboard name={name} score={score} category={category} difficulty={difficulty} players={players}/>} />
+                <Route path='/leaderboard' element={<Leaderboard score={score} category={category} difficulty={difficulty} players={players}/>} />
 
                 <Route path="*" element={<p>nothing here mate</p>}/>
             </Routes>
