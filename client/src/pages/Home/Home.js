@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Select, MenuItem, InputLabel, FormControl, Button, Container, TextField, CssBaseline, Paper, FormGroup, Grid } from '@mui/material';
+import { Select, MenuItem, InputLabel, FormControl, Button, Container, TextField, CssBaseline, Paper, Grid } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import {useNavigate} from 'react-router-dom';
 import RemoveIcon from '@mui/icons-material/Remove';
@@ -8,7 +8,7 @@ import Parent from './bgTheme.js'
 
 
 
-const Home = ({setName, setPlayers, fetchQuestions, players, inputFields, setInputFields}) => {
+const Home = ({fetchQuestions, inputFields, setInputFields}) => {
  const [amount, setAmount] = useState("");
  const [difficulty, setDifficulty] = useState("");
  const [category, setCategory] = useState("");
@@ -103,23 +103,6 @@ const navigate = useNavigate();
                     </div>
                 ))}
            
-          
-             {/* <FormControl margin='normal' color="secondary">
-                <InputLabel id="player-label">Number of Players</InputLabel>
-                
-                <Select labelid="players-label"
-                        id = "players" 
-                        type = "number"
-                        label = "players" 
-                        onChange={(e =>setPlayers(e.target.value))}
-                        >
-
-                    <MenuItem value="0">1</MenuItem>
-                    <MenuItem value="1">2</MenuItem>
-                    <MenuItem value="2">3</MenuItem>
-                    <MenuItem value="3">4</MenuItem>                    
-                </Select>    
-            </FormControl> */}
 
             <FormControl margin='normal'  >
                 <TextField labelid="amount-label"
@@ -127,7 +110,7 @@ const navigate = useNavigate();
                             id = "amount" 
                             color="secondary"
                             value={amount}
-                            type="number"
+                            
                             label="Number of Questions" 
                             onChange={handleAmount}/>
             </FormControl>

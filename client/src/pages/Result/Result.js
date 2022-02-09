@@ -1,10 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
-import { Button, Container, TextField, CssBaseline, Paper } from '@mui/material';
+import { Button, Container, CssBaseline, Paper } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import Axios from 'axios';
-import { display } from '@mui/system';
-import { ComponentPropsToStylePropsMapKeys } from '@aws-amplify/ui-react';
+
+
 
 const Result = ({inputFields, score, category, difficulty, amount, setScore}) => {
     const navigate = useNavigate();
