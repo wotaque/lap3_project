@@ -14,12 +14,13 @@ import "./App.css";
 function App() {
     const [name, setName] = useState("")
     const [questions, setQuestions] = useState();
-    const [score, setScore] = useState();
+    const [score, setScore] = useState(0);
     const [number, setNumber]=useState();
     const [players, setPlayers] = useState()
     const [category, setCategory] = useState("");
     const [difficulty, setDifficulty] = useState("")
     const [amount, setAmount] = useState()
+    
     const fetchQuestions = async (amount, category, difficulty) => {
     
         try{
