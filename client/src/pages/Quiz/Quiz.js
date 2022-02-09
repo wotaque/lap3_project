@@ -3,13 +3,9 @@ import React, { useEffect, useState } from 'react';
 import Question from '../../components/Question/Question';
 import CustomTheme from './muiTheme';
 import SupportIcon from '@mui/icons-material/Support';
-import { Container, ThemeProvider, Card, CssBaseline, Paper, Link} from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { Container, CssBaseline, Paper } from '@mui/material';
-import { makeStyles } from '@mui/styles';
-
+import { Container, CssBaseline, Paper, ThemeProvider, Card } from '@mui/material';
 import Link from '@mui/material/Link';
-import SupportIcon from '@mui/icons-material/Support';
 import Parent from './bgTheme'
 
 const Quiz = ({score,questions,setScore,number,inputFields}) => {
@@ -79,16 +75,19 @@ const Quiz = ({score,questions,setScore,number,inputFields}) => {
 
 
 
-  return <Parent className={classes.root}  >
+  return <Parent className={classes.root}>
      
+    <CssBaseline />
+    <Container sx={{ maxWidth: 500 }} style={{ width: 400, margin: 'auto' }}>
 
+
+      <Paper className={classes.paperRoot}
+        component="form"
+        sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
+      >
       {
           questions ?(<div>
-          {/* <div>
-            Player: {inputFields.map((inputField, index) => (
-              <div key={index}>{inputField[index].username}</div>
-            ))}
-          </div> */}
+
           <div>
             Player: {displayNames(curPlay)}
           </div>
@@ -106,47 +105,18 @@ const Quiz = ({score,questions,setScore,number,inputFields}) => {
             numPlayer={numPlayer}
           
           />
-
-    <CssBaseline />
-    <Container sx={{ maxWidth: 500 }} style={{ width: 400, margin: 'auto' }}>
-
-
-      <Paper className={classes.paperRoot}
-        component="form"
-        sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
-      >
+          
       
-  
-      
-        {questions ?(<div>
-            <div>
-              <h1>Player:{curPlay}</h1>
-            </div>
-
-            <Question 
-              curQues={curQues}
-              setCurQues={setCurQues}
-              questions={questions}
-              choices={choices}
-              correct={questions[curQues]?.correct_answer}
-              score={score}
-              setScore={setScore}
-              number={number}
-              players={players}
-              curPlay={curPlay}
-              setCurPlay={setCurPlay}
-            
-            />
-            <Link href="https://www.wikipedia.org/"
+            {/* <Link href="https://www.wikipedia.org/"
             rel="noreferrer"
             target="_blank"
             id="tweet-quote">
             <SupportIcon 
             style={{fontSize: 40 }}
             />
-          </Link>
-
+          </Link> */}
           </div>
+          
           ):(<CircularProgress />)
 
           
@@ -156,9 +126,9 @@ const Quiz = ({score,questions,setScore,number,inputFields}) => {
       </Paper>
    
     </Container>
-        
+    
          
-  </ Parent > 
+  </Parent > 
 
 };
     

@@ -52,6 +52,11 @@ const Result = ({inputFields, score, category, difficulty, amount, setScore}) =>
         },
       });
      const classes = useStyles();
+
+     const resultName = () => {
+         for(let i=0; i<)
+     }
+
      return <div className={classes.root} style={{ width: '100%' }} >
         
         <CssBaseline />
@@ -63,7 +68,7 @@ const Result = ({inputFields, score, category, difficulty, amount, setScore}) =>
         >
       <h2>Result</h2>
       <div>
-          Name: {inputFields} 
+          Name: {inputFields[0].username} 
           <div>
            Final Score: {score}/{amount}
           </div>
