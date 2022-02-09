@@ -1,0 +1,24 @@
+
+header { 
+padding-top: 10%;
+background-size: cover;
+font-family: 'Sucrose Bold Two';
+}
+
+header h1 { 
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  font-size: 8vw;
+  line-height: .8;
+  margin-top: 0;
+  text-align: center;
+  color: #8458B3;
+}
+header h1 span {
+  display: block;
+  font-size: 5vw;
+}
+
+@media all and (max-width: 400px) {
+}
