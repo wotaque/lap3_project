@@ -114,7 +114,7 @@ const Question = ({
     <Container sx={{ maxWidth: 500 }} style={{ width: 400, margin: 'auto' }}>
 
    
-        <h1>Question {curQues + 1}</h1>
+        <h1>Question # {curQues + 1}</h1>
 
         <div>
             <h2>{he.decode(questions[curQues].question)}</h2>
@@ -134,7 +134,7 @@ const Question = ({
         <Grid container justifyContent="flex-end">
  
             <Button variant='contained' color='secondary' 
-            endIcon={<DoubleArrowIcon />}
+            endIcon={<DoubleArrowIcon style={{fill: "white"}} />}
             style={{fontSize: 20, height: 40 }}
             onClick={handleNextPlayer} 
             >
