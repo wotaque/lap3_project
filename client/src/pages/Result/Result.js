@@ -4,7 +4,7 @@ import { Button, Container, CssBaseline, Paper } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import Axios from 'axios';
 
-const Result = ({inputFields, score, category, difficulty, amount, setScore}) => {
+const Result = ({inputFields, score, category, difficulty, amount, setScore, setInputFields}) => {
     const navigate = useNavigate();
 
     var numPlayer = inputFields.length;
@@ -16,6 +16,7 @@ const Result = ({inputFields, score, category, difficulty, amount, setScore}) =>
 
     const goHome = () => {
         navigate('/')
+        setInputFields([{username: '',score: 0}])
         setScore(0)
     }
 

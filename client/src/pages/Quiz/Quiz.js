@@ -6,7 +6,7 @@ import { Container, CssBaseline, Paper } from '@mui/material';
 
 import Parent from './bgTheme'
 
-const Quiz = ({score,questions,setScore,number,inputFields}) => {
+const Quiz = ({score,questions,setScore,number,inputFields, setInputFields}) => {
 
     const [choices, setChoices] = useState()
     const [curQues , setCurQues] = useState(0)
@@ -64,7 +64,7 @@ const Quiz = ({score,questions,setScore,number,inputFields}) => {
     return inputFields[3].username
   }
  }
-
+console.log(inputFields)
   return <Parent className={classes.root}>
      
     <CssBaseline />
@@ -93,7 +93,8 @@ const Quiz = ({score,questions,setScore,number,inputFields}) => {
             curPlay={curPlay}
             setCurPlay={setCurPlay}
             numPlayer={numPlayer}
-          
+            inputFields={inputFields}
+            setInputFields={setInputFields}
           />
           
           </div>

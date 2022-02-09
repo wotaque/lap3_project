@@ -20,16 +20,17 @@ const Question = ({
     numPlayer,
     curPlay,
     setCurPlay,
-    inputFields
+    inputFields,
+    setInputFields
 }) => {
     const [selected, setSelected] = useState(false)
     //const [error, setError] = useState(false)
 
 
-    const [userScore, setUserScore] = useState([{
-        username: curPlay, 
-        score: score
-    }])
+    
+
+    
+    console.log(inputFields)
 
     const handleSelect = (i) => {
         if(selected===i && selected===correct ){
@@ -43,17 +44,27 @@ const Question = ({
 
     const handleCheck = (i) =>{
         setSelected(i);
-        if (i=== correct) setScore(score + 1);
-        console.log(score)
-    }
-
-    useEffect(() =>{
-        setUserScore([{
-            username: curPlay,
-            score: userScore}])
+        
+        if (i=== correct) {
+            // let score=inputFields[curPlay].points
+            setScore(1) ;
+            inputFields[curPlay].points += score
+            console.log(inputFields[curPlay].points )
+            // setInputFields(inputFields[curPlay].points = score)
+        //    setScore(0) 
+           console.log(score)
+        } 
        
-    },[curPlay, score])
-         console.log(score)
+    }
+     console.log(score)
+    
+    // useEffect(() =>{
+    //     setInputFields([{
+          
+    //         score: score}])
+    //         // setInputFields(inputFields[0].score + 1)
+    // },[score, setInputFields])
+       
          
     let navigate = useNavigate();
 
@@ -65,6 +76,7 @@ const Question = ({
              setCurPlay(curPlay => curPlay + 1)
              setCurQues(curQues)
              setSelected()
+             
         } 
     }
 

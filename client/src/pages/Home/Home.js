@@ -8,7 +8,7 @@ import Parent from './bgTheme.js'
 
 
 
-const Home = ({fetchQuestions, inputFields, setInputFields}) => {
+const Home = ({fetchQuestions, inputFields, setInputFields, score}) => {
  const [amount, setAmount] = useState("");
  const [difficulty, setDifficulty] = useState("");
  const [category, setCategory] = useState("");
@@ -43,7 +43,7 @@ const navigate = useNavigate();
   }
 
   const handleAddFields = () => {
-      setInputFields([...inputFields, { username: ''}])
+      setInputFields([...inputFields, { username: '', points: score}])
   }
 
   const handleRemoveInput = (id) => {
