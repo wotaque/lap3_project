@@ -14,12 +14,13 @@ import "./App.css";
 function App() {
     const [name, setName] = useState("")
     const [questions, setQuestions] = useState();
-    const [score, setScore] = useState();
+    const [score, setScore] = useState(0);
     const [number, setNumber]=useState();
     const [players, setPlayers] = useState()
     const [category, setCategory] = useState("");
     const [difficulty, setDifficulty] = useState("")
     const [amount, setAmount] = useState()
+    
     const fetchQuestions = async (amount, category, difficulty) => {
     
         try{
@@ -40,10 +41,7 @@ function App() {
 
     return (
         <div id="app">
-
-
             <Header />
-
 
             <Routes>
                 <Route path='/' element={<Home name={name} setName={setName} category={category} difficulty={difficulty} fetchQuestions={fetchQuestions} setPlayers={setPlayers} players={players} />}/>
@@ -55,14 +53,12 @@ function App() {
                 <Route path='/leaderboard' element={<Leaderboard name={name} score={score} category={category} difficulty={difficulty} players={players}/>} />
 
                 <Route path="*" element={<p>nothing here mate</p>}/>
-     
             </Routes>
 
             <Footer /> 
 
             <Outlet />
 
-            
         </div>
     )
 }

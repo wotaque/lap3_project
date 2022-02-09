@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
-import { Button } from '@mui/material';
+import { Button, Card, CardContent, Paper, Typography } from '@mui/material';
 import { useNavigate } from 'react-router';
+import { makeStyles } from '@mui/styles';
 
 const Leaderboard = () => {
   const [ userScore, setUserScore ] = useState([]);  
@@ -35,19 +36,36 @@ const Leaderboard = () => {
        }
    }
 
-  return <div>
-      <h1>Leaderboard</h1>
-      <Button variant="contained" onClick={goHome}>Home</Button>
-      
+   const useStyles = makeStyles({
+    paperRoot: {
+      background: 'linear-gradient(45deg, #A0D2EB 30%, #D0BDF4 90%)',
+      border: 0,
+      borderRadius: 3,
+      boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+      color: 'white',
+    
+    },
+  });
+ const classes = useStyles();
 
-      {userScore.map((val, key) => {
-          return <div key={key}> 
-          <h2>Username: {val.name}</h2> 
-          <h2>Score: {val.score}/{val.amount}</h2>
-          <h2>Difficulty: {val.difficulty}</h2>
-          <h2>Category: {categoryNames(val.category)}</h2>
-           </div>
-      })}  
+  return <div className={classes.root}>
+      
+      <Button variant="contained" onClick={goHome}>Home</Button>
+      <Typography variant="h4" gutterBottom={true}>
+          Leaderboard
+      </Typography>
+      <Paper elevation={3} style={{padding:8, color:"black"}} className={classes.paperRoot}>
+            {userScore.map((val, key) => {
+            return <div key={key}> 
+            <Typography variant="h5">Username: {val.name}</Typography> 
+            <Typography variant="h6">Score: {val.score}/{val.amount}</Typography>
+            <Typography>Difficulty: {val.difficulty}</Typography>
+            <Typography>Category: {categoryNames(val.category)}</Typography>
+            </div>
+        })} 
+      </Paper>
+      
+       
         
   </div>;
 };

@@ -1,12 +1,19 @@
 import React, {useState} from 'react';
-import { Select, MenuItem, InputLabel, FormControl, Button, Container, TextField, CssBaseline, Paper } from '@mui/material';
+import { Select, MenuItem, InputLabel, FormControl, Button, Container, TextField, CssBaseline, Paper, FormGroup, Grid } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import {useNavigate} from 'react-router-dom';
+import RemoveIcon from '@mui/icons-material/Remove';
+import AddIcon from '@mui/icons-material/Add';
+
 
 const Home = ({setName, setPlayers, fetchQuestions, players}) => {
  const [amount, setAmount] = useState("");
  const [difficulty, setDifficulty] = useState("");
  const [category, setCategory] = useState("");
+ const [ inputFields, setInputFields ] = useState([
+    { firstName: '', lastName: '' },
+ ]);
+ 
  
 const navigate = useNavigate();
 
@@ -25,8 +32,23 @@ const navigate = useNavigate();
   const handleCategory = (e) => setCategory(e.target.value);
  
 
+  const handleChangeInput = (index, event) => {
+      const values = [...inputFields];
+      values[index][event.target.name] = event.target.value;
+      setInputFields(values);
+  }
 
-const useStyles = makeStyles({
+  const handleAddFields = () => {
+      setInputFields([...inputFields, { firstName: '', lastName: ''}])
+  }
+
+  const handleRemoveInput = (id) => {
+      const values = [...inputFields];
+      values.splice(values.findIndex(value => value.id === id), 1);
+      setInputFields(values);
+  }
+
+  const useStyles = makeStyles({
     paperRoot: {
       background: 'linear-gradient(45deg, #A0D2EB 30%, #D0BDF4 90%)',
       border: 0,
@@ -38,24 +60,53 @@ const useStyles = makeStyles({
   });
  const classes = useStyles();
 
-
- return <div id="home" className={classes.root} >
-    
+ return <div id="home" className={classes.root}  style={{ width: '100%' }}  >
+   
     <CssBaseline />
-    <Container sx={{ maxWidth: 500 }} style={{ width: 400, margin: 'auto' }}>
+    <Container sx={{ minWidth: 600 }} style={{ width: 400, margin: 'auto' }}>
 
     <Paper className={classes.paperRoot}
       component="form"
-      sx={{ p: '2px 4px', 
-      display: 'flex', 
-      alignItems: 'center', 
-      width: 400 }}
+      sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 600 }}
     >
+
+
+          
+   
    
     
 
-        <FormControl  className="form" margin='normal' sx={{ maxWidth: 500 }} style={{ width: 400, margin: 'auto' }}  >
+        <FormControl  className="form" margin='normal' sx={{ minWidth: 500 }} style={{ width: 1000, margin: 'auto' }}  >
 
+             
+                
+                { inputFields.map((inputField, index) => (
+                    <div key={index}>
+                    
+                       <FormControl margin='normal' color="secondary" sx={{ minWidth: 500 }} >
+                       
+                       <Grid container spacing={0}>
+                       <Grid item xs={4}>
+                      <TextField 
+                            name="firstName"
+                            label="First Name"
+                            value={inputField.firstName}
+                            onChange={event => handleChangeInput(index, event)}/></Grid>
+                            <Grid item xs={4}>
+                           <TextField 
+                            name="lastName"
+                            label="Last Name"
+                            value={inputField.lastName}
+                            onChange={event => handleChangeInput(index, event)}/></Grid></Grid>
+                        <Grid item xs={4}>
+                        <RemoveIcon disabled={inputFields.length === 1} onClick={() => handleRemoveInput(inputField.id)}/>
+                        <AddIcon onClick={() => handleAddFields()}/></Grid>
+                             </FormControl>
+                        
+                    </div>
+                ))}
+           
+          
              <FormControl margin='normal' color="secondary">
                 <InputLabel id="player-label">Number of Players</InputLabel>
                 
@@ -71,12 +122,6 @@ const useStyles = makeStyles({
                     <MenuItem value="2">3</MenuItem>
                     <MenuItem value="3">4</MenuItem>                    
                 </Select>    
-            </FormControl>
-           
-            <FormControl margin='normal' >
-                
-                <TextField label = "Name" color="secondary"  onChange={(e =>setName(e.target.value))} />
-
             </FormControl>
 
             <FormControl margin='normal'  >
@@ -138,11 +183,7 @@ const useStyles = makeStyles({
     
      
     </div>
-        
 };
-
-
-
 
 
 export default Home;
