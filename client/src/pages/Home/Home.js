@@ -6,20 +6,22 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 
 
-const Home = ({setName, setPlayers, fetchQuestions, players}) => {
+const Home = ({setName, setPlayers, fetchQuestions, players, inputFields, setInputFields}) => {
  const [amount, setAmount] = useState("");
  const [difficulty, setDifficulty] = useState("");
  const [category, setCategory] = useState("");
- const [ inputFields, setInputFields ] = useState([
-    { firstName: '', lastName: '' },
- ]);
+
  
  
 const navigate = useNavigate();
 
   const handleSubmit = () => {
-    fetchQuestions(amount,category,difficulty);
-    navigate('/quiz');
+    if(amount && difficulty && category){
+        fetchQuestions(amount,category,difficulty);
+        navigate('/quiz');
+    } else {
+        alert("Need to fill in all fields")
+    }
   };
 
   const handleScores = () => {
@@ -39,7 +41,7 @@ const navigate = useNavigate();
   }
 
   const handleAddFields = () => {
-      setInputFields([...inputFields, { firstName: '', lastName: ''}])
+      setInputFields([...inputFields, { username: ''}])
   }
 
   const handleRemoveInput = (id) => {
@@ -60,44 +62,37 @@ const navigate = useNavigate();
   });
  const classes = useStyles();
 
+
+
  return <div id="home" className={classes.root}  style={{ width: '100%' }}  >
    
     <CssBaseline />
-    <Container sx={{ minWidth: 600 }} style={{ width: 400, margin: 'auto' }}>
+    <Container style={{  margin: 'auto' }}>
 
     <Paper className={classes.paperRoot}
       component="form"
-      sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 600 }}
+      sx={{ p: '2px 4px', display: 'flex', alignItems: 'center' }}
     >
 
-
-          
-   
-   
-    
-
-        <FormControl  className="form" margin='normal' sx={{ minWidth: 500 }} style={{ width: 1000, margin: 'auto' }}  >
+        <FormControl  className="form" margin='normal' sx={{ }} style={{  margin: 'auto' }}  >
 
              
                 
                 { inputFields.map((inputField, index) => (
                     <div key={index}>
                     
-                       <FormControl margin='normal' color="secondary" sx={{ minWidth: 500 }} >
+                       <FormControl margin='normal' color="secondary" sx={{ minWidth: 1000 }} >
                        
                        <Grid container spacing={0}>
                        <Grid item xs={4}>
                       <TextField 
-                            name="firstName"
-                            label="First Name"
-                            value={inputField.firstName}
+                            name="username"
+                            label="Username"
+                            value={inputField.username}
                             onChange={event => handleChangeInput(index, event)}/></Grid>
                             <Grid item xs={4}>
-                           <TextField 
-                            name="lastName"
-                            label="Last Name"
-                            value={inputField.lastName}
-                            onChange={event => handleChangeInput(index, event)}/></Grid></Grid>
+                           </Grid>
+                        </Grid>
                         <Grid item xs={4}>
                         <RemoveIcon disabled={inputFields.length === 1} onClick={() => handleRemoveInput(inputField.id)}/>
                         <AddIcon onClick={() => handleAddFields()}/></Grid>
@@ -107,7 +102,7 @@ const navigate = useNavigate();
                 ))}
            
           
-             <FormControl margin='normal' color="secondary">
+             {/* <FormControl margin='normal' color="secondary">
                 <InputLabel id="player-label">Number of Players</InputLabel>
                 
                 <Select labelid="players-label"
@@ -122,7 +117,7 @@ const navigate = useNavigate();
                     <MenuItem value="2">3</MenuItem>
                     <MenuItem value="3">4</MenuItem>                    
                 </Select>    
-            </FormControl>
+            </FormControl> */}
 
             <FormControl margin='normal'  >
                 <TextField labelid="amount-label"
@@ -130,6 +125,7 @@ const navigate = useNavigate();
                             id = "amount" 
                             color="secondary"
                             value={amount}
+                            type="number"
                             label="Number of Questions" 
                             onChange={handleAmount}/>
             </FormControl>
@@ -169,11 +165,12 @@ const navigate = useNavigate();
                 </Select>   
             </FormControl>
 
-            <Button variant="contained" onClick={handleScores}>Leaderboard</Button>
+            
             
             <FormControl  margin='normal'>
                 <Button color="secondary" variant="contained" onClick={handleSubmit} value="Start Quiz" >Start Quiz</Button>
             </FormControl>
+            <Button variant="contained" onClick={handleScores}>Leaderboard</Button>
               
         </FormControl>
       

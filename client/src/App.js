@@ -20,6 +20,9 @@ function App() {
     const [category, setCategory] = useState("");
     const [difficulty, setDifficulty] = useState("")
     const [amount, setAmount] = useState()
+    const [ inputFields, setInputFields ] = useState([
+        { username: ''},
+     ]);
     
     const fetchQuestions = async (amount, category, difficulty) => {
     
@@ -44,11 +47,11 @@ function App() {
             <Header />
 
             <Routes>
-                <Route path='/' element={<Home name={name} setName={setName} category={category} difficulty={difficulty} fetchQuestions={fetchQuestions} setPlayers={setPlayers} players={players} />}/>
+                <Route path='/' element={<Home category={category} difficulty={difficulty} fetchQuestions={fetchQuestions} setPlayers={setPlayers} players={players} inputFields={inputFields} setInputFields={setInputFields} />}/>
        
-                <Route path='/quiz' element={<Quiz questions = {questions} score = {score} setScore={setScore} number={number} players={players}/>} />
+                <Route path='/quiz' element={<Quiz questions = {questions} score = {score} setScore={setScore} number={number} players={players} inputFields={inputFields}/>} />
 
-                <Route path='/result' element={<Result name={name} score={score} category={category} amount={amount} difficulty={difficulty} players={players} setScore={setScore}/>} />
+                <Route path='/result' element={<Result name={name} score={score} category={category} amount={amount} difficulty={difficulty} players={players} setScore={setScore}/>} inputFields={inputFields}/>
                 
                 <Route path='/leaderboard' element={<Leaderboard name={name} score={score} category={category} difficulty={difficulty} players={players}/>} />
 

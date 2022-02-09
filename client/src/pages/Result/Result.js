@@ -4,13 +4,13 @@ import { Button, Container, TextField, CssBaseline, Paper } from '@mui/material'
 import { makeStyles } from '@mui/styles';
 import Axios from 'axios';
 
-const Result = ({name, score, category, difficulty, amount, setScore}) => {
+const Result = ({inputFields, score, category, difficulty, amount, setScore}) => {
     const navigate = useNavigate();
 
 
     const handlePost = (e) => {
         e.preventDefault();
-        Axios.post("http://localhost:3001/insert", {name: name, score: score, category: category, amount: amount, difficulty: difficulty});
+        Axios.post("http://localhost:3001/insert", {name: inputFields, score: score, category: category, amount: amount, difficulty: difficulty});
         alert('Your score has been posted!')
     }
 
@@ -63,7 +63,7 @@ const Result = ({name, score, category, difficulty, amount, setScore}) => {
         >
       <h2>Result</h2>
       <div>
-          Name: {name} 
+          Name: {inputFields} 
           <div>
            Final Score: {score}/{amount}
           </div>

@@ -1,4 +1,4 @@
-import { CircularProgress } from '@mui/material';
+import { CircularProgress, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import Question from '../../components/Question/Question';
 import CustomTheme from './muiTheme';
@@ -9,11 +9,12 @@ import SupportIcon from '@mui/icons-material/Support';
 import { Container, ThemeProvider, Card, Typography, CssBaseline, Paper, Link} from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
-const Quiz = ({score,questions,setScore,number,players}) => {
+const Quiz = ({score,questions,setScore,number,players,inputFields}) => {
 
-  const [choices, setChoices] = useState()
-  const [curQues , setCurQues] = useState(0)
-  const [curPlay, setCurPlay] = useState(1)
+    const [choices, setChoices] = useState()
+    const [curQues , setCurQues] = useState(0)
+    const [curPlay, setCurPlay] = useState()
+
      
   useEffect(()=>{
     //console.log(questions)
@@ -46,48 +47,55 @@ const Quiz = ({score,questions,setScore,number,players}) => {
 
  const classes = useStyles();
 
-  return (
-    
-    <div className={classes.root} style={{ width: '100%' }} >
-      <CssBaseline />
 
-      <Card 
-        sx={{ maxWidth: 600 }} 
-        style={{ width: 500, margin: 'auto' }}>
+ console.log(inputFields)
 
-        <Paper className={classes.paperRoot}
-          component="form">
-          {/* sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }} */}
-        
-      
-          { questions ?(
-            <div>
+  return <div className={classes.root} style={{ width: '100%' }} >
+     
+     <CssBaseline />
+    <Container sx={{ maxWidth: 500 }} style={{ width: 400, margin: 'auto' }}>
 
-            <Typography gutterBottom variant="h5" component="div">
-              {/* <h1>Score : {score}/{number}</h1> */}
-                Player:{curPlay}</Typography>
-            
+    <Paper className={classes.paperRoot}
+      component="form"
+      sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
+    >
+     
+     
+     
+      {
+          questions ?(<div>
+          {/* <div>
+          Player:{inputFields.map((inputField, index) => (
+                    <div key={index}>
+                      <Typography 
+                            name="username"
+                            value={inputField.username}
+                      />
+                    </div>
+                ))}
+              
+          </div> */}
 
-                {/*<div> */}
-              {/* {/* <h1>Score : {score}/{number}</h1> */} 
-              {/*<h1>Player:{curPlay}</h1> */}
-          {/*</div> */}
+          <div>
+            Player: {inputFields.map((inputField, index) => (
+              <div key={index}>{inputField[index].username}</div>
+            ))}
+          </div>
+          <Question 
+            curQues={curQues}
+            setCurQues={setCurQues}
+            questions={questions}
+            choices={choices}
+            correct={questions[curQues]?.correct_answer}
+            score={score}
+            setScore={setScore}
+            number={number}
+            players={players}
+            curPlay={curPlay}
+            setCurPlay={setCurPlay}
+          
+          />
 
-            
-              <Question 
-                curQues={curQues}
-                setCurQues={setCurQues}
-                questions={questions}
-                choices={choices}
-                correct={questions[curQues]?.correct_answer}
-                score={score}
-                setScore={setScore}
-                number={number}
-                players={players}
-                curPlay={curPlay}
-                setCurPlay={setCurPlay}
-              />
-        
             </div>
 
           ):(<CircularProgress />)
