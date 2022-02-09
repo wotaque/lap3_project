@@ -69,7 +69,7 @@ const navigate = useNavigate();
  return <Parent id="home" className={classes.root}  >
    
     <CssBaseline />
-    <Container sx={{ maxWidth: 500 }} style={{ width: 400, margin: 'auto' }}>
+    <Container style={{margin: 'auto' }}>
 
     <Paper className={classes.paperRoot}
       component="form"
@@ -85,7 +85,7 @@ const navigate = useNavigate();
                 { inputFields.map((inputField, index) => (
                     <div key={index}>
                     
-                       <FormControl margin='normal' color="secondary" sx={{ minWidth: 400 }} >
+                       <FormControl margin='normal' color="secondary" sx={{ minWidth: 1000 }} >
                        
                        <Grid container spacing={0}>
                        <Grid item xs={4}>
