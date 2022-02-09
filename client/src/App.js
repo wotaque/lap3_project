@@ -51,7 +51,7 @@ function App() {
        
                 <Route path='/quiz' element={<Quiz questions = {questions} score = {score} setScore={setScore} number={number} players={players} inputFields={inputFields}/>} />
 
-                <Route path='/result' element={<Result name={name} score={score} category={category} amount={amount} difficulty={difficulty} players={players} setScore={setScore}/>} inputFields={inputFields}/>
+                <Route path='/result' element={<Result score={score} category={category} amount={amount} difficulty={difficulty} players={players} setScore={setScore} inputFields={inputFields}/>} />
                 
                 <Route path='/leaderboard' element={<Leaderboard name={name} score={score} category={category} difficulty={difficulty} players={players}/>} />
 
