@@ -2,22 +2,19 @@ import { CircularProgress, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import Question from '../../components/Question/Question';
 import CustomTheme from './muiTheme';
-
-
 import SupportIcon from '@mui/icons-material/Support';
-
-import { Container, ThemeProvider, Card, Typography, CssBaseline, Paper, Link} from '@mui/material';
+import { Container, ThemeProvider, Card, CssBaseline, Paper, Link} from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
-const Quiz = ({score,questions,setScore,number,players,inputFields}) => {
+const Quiz = ({score,questions,setScore,number,inputFields}) => {
 
     const [choices, setChoices] = useState()
     const [curQues , setCurQues] = useState(0)
-    const [curPlay, setCurPlay] = useState()
+    const [curPlay, setCurPlay] = useState(0)
+  
 
-     
+    var numPlayer = inputFields.length; 
   useEffect(()=>{
-    //console.log(questions)
     setChoices(questions && 
       handleShuffle([questions[curQues]?.correct_answer, 
         ...questions[curQues]?.incorrect_answers,])
@@ -47,8 +44,23 @@ const Quiz = ({score,questions,setScore,number,players,inputFields}) => {
 
  const classes = useStyles();
 
+ const displayNames = (num) => {
+   if (num === 0){
+     return inputFields[0].username
+   }
+   if(num === 1){
+     return inputFields[1].username
+   }
+   if(num === 2){
+    return inputFields[2].username
+  }
+  if(num === 3){
+    return inputFields[3].username
+  }
+ }
 
- console.log(inputFields)
+
+ console.log(numPlayer)
 
   return <div className={classes.root} style={{ width: '100%' }} >
      
@@ -65,21 +77,12 @@ const Quiz = ({score,questions,setScore,number,players,inputFields}) => {
       {
           questions ?(<div>
           {/* <div>
-          Player:{inputFields.map((inputField, index) => (
-                    <div key={index}>
-                      <Typography 
-                            name="username"
-                            value={inputField.username}
-                      />
-                    </div>
-                ))}
-              
-          </div> */}
-
-          <div>
             Player: {inputFields.map((inputField, index) => (
               <div key={index}>{inputField[index].username}</div>
             ))}
+          </div> */}
+          <div>
+            Player: {displayNames(curPlay)}
           </div>
           <Question 
             curQues={curQues}
@@ -90,9 +93,9 @@ const Quiz = ({score,questions,setScore,number,players,inputFields}) => {
             score={score}
             setScore={setScore}
             number={number}
-            players={players}
             curPlay={curPlay}
             setCurPlay={setCurPlay}
+            numPlayer={numPlayer}
           
           />
 
@@ -116,9 +119,9 @@ const Quiz = ({score,questions,setScore,number,players,inputFields}) => {
         </Paper>
 
     
-      </Card>
+      </Container>
     </div>
-  )
+  
 };
 
 export default Quiz;

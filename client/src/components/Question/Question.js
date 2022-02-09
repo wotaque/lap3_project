@@ -13,9 +13,10 @@ const Question = ({
     score,
     setScore,
     number,
-    players,
+    numPlayer,
     curPlay,
-    setCurPlay
+    setCurPlay,
+    inputFields
 }) => {
     const [selected, setSelected] = useState(false)
     //const [error, setError] = useState(false)
@@ -39,20 +40,20 @@ const Question = ({
         console.log(score)
     }
 
-    useEffect(() =>{
-        setScore1(arr=>[curPlay,score])
+    // useEffect(() =>{
+    //     setScore1(arr=>[curPlay,score])
        
-    },[curPlay, score])
-         console.log(score1)
+    // },[curPlay, score])
+    //      console.log(score1)
          
     let navigate = useNavigate();
 
     const handleNextPlayer= () =>{
-        if(curPlay > players){
+        if(curPlay >= numPlayer - 1){
             handleNextQuestion();
-            setCurPlay(1)
+            setCurPlay(0)
         }else{
-             setCurPlay(curPlay+1)
+             setCurPlay(curPlay => curPlay + 1)
              setCurQues(curQues)
              setSelected()
         } 
