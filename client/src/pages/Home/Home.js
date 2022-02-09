@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Select, MenuItem, InputLabel, FormControl, Button, Container, TextField, CssBaseline, Paper } from '@mui/material';
+import { Select, MenuItem, InputLabel, FormControl, Button, Container, TextField, CssBaseline, Paper, Box } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import {useNavigate} from 'react-router-dom';
 import RemoveIcon from '@mui/icons-material/Remove';
@@ -70,8 +70,9 @@ const navigate = useNavigate();
       sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
     >
 
-<Container>
-          <form>
+        <FormControl  className="form" margin='normal' sx={{ maxWidth: 500 }} style={{ width: 400, margin: 'auto' }}  >
+
+        <FormControl margin="normal">
                 { inputFields.map((inputField, index) => (
                     <div key={index}>
                         <TextField 
@@ -89,12 +90,7 @@ const navigate = useNavigate();
                     </div>
                 ))}
                 
-            </form>
-      </Container>
-   
-    
-
-        <FormControl  className="form" margin='normal' sx={{ maxWidth: 500 }} style={{ width: 400, margin: 'auto' }}  >
+            </FormControl>
 
              <FormControl margin='normal' color="secondary">
                 <InputLabel id="player-label">Number of Players</InputLabel>
