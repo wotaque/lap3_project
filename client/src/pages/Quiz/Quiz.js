@@ -1,18 +1,27 @@
 import { CircularProgress, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import Question from '../../components/Question/Question';
-import { Container, CssBaseline, Paper } from '@mui/material';
+import CustomTheme from './muiTheme';
+
+
+import SupportIcon from '@mui/icons-material/Support';
+
+import { Container, ThemeProvider, Card, Typography, CssBaseline, Paper, Link} from '@mui/material';
 import { makeStyles } from '@mui/styles';
+
 const Quiz = ({score,questions,setScore,number,players,inputFields}) => {
 
     const [choices, setChoices] = useState()
     const [curQues , setCurQues] = useState(0)
     const [curPlay, setCurPlay] = useState()
+
      
   useEffect(()=>{
     //console.log(questions)
-    setChoices(questions && handleShuffle([questions[curQues]?.correct_answer, ...questions[curQues]?.incorrect_answers,])
-                                          );
+    setChoices(questions && 
+      handleShuffle([questions[curQues]?.correct_answer, 
+        ...questions[curQues]?.incorrect_answers,])
+    );
   },[questions,curQues]); 
   
   // useEffect(()=>{
@@ -21,6 +30,7 @@ const Quiz = ({score,questions,setScore,number,players,inputFields}) => {
 
   //console.log(choices)
   //shuffle answers
+
   const handleShuffle = (options) => {
     return options.sort(()=> Math.random() -0.5 );
   }
@@ -31,11 +41,12 @@ const Quiz = ({score,questions,setScore,number,players,inputFields}) => {
       border: 0,
       borderRadius: 3,
       boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-      color: 'white',
-    
+      color: '#8458B3', 
     },
   });
+
  const classes = useStyles();
+
 
  console.log(inputFields)
 
@@ -86,15 +97,28 @@ const Quiz = ({score,questions,setScore,number,players,inputFields}) => {
           />
 
             </div>
+
           ):(<CircularProgress />)
+          }
+
+          <Link
+            href="https://www.wikipedia.org/"
+            rel="noreferrer"
+            target="_blank"
+            id="tweet-quote"
+          >
+            <SupportIcon />
+          </Link>
+
 
           
-      }
 
-    </Paper>
-   
-   </Container>
-     </div>;
+        </Paper>
+
+    
+      </Card>
+    </div>
+  )
 };
 
 export default Quiz;
