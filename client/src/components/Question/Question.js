@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Button, Container, CssBaseline } from '@mui/material';
+import { Button, Container, CssBaseline, Grid } from '@mui/material';
 
 import { useNavigate } from 'react-router';
 import he from 'he';
@@ -17,7 +17,7 @@ const Question = ({
     curPlay,
     setCurPlay
 }) => {
-    const [selected, setSelected] = useState()
+    const [selected, setSelected] = useState(false)
     //const [error, setError] = useState(false)
 
 
@@ -40,10 +40,11 @@ const Question = ({
     }
 
     useEffect(() =>{
-        setScore1([curPlay,score])
-        console.log(score1)
-    },[curPlay,score])
-
+        setScore1(arr=>[curPlay,score])
+       
+    },[curPlay, score])
+         console.log(score1)
+         
     let navigate = useNavigate();
 
     const handleNextPlayer= () =>{
@@ -99,18 +100,18 @@ const Question = ({
 
         <div>
             {choices && choices.map(i =>(
-              <Button variant= 'contained' onClick={() => handleCheck(i)}
+              <Grid ><Button variant= '' onClick={() => handleCheck(i)}
                     className={`singleOption ${selected && handleSelect(i)}`}
                     key={i}
                     disabled={selected}
-              >{he.decode(i)}</Button>  
+              >{he.decode(i)}</Button></Grid>
             ))}
         </div>
 
         <div>
             
             <Button variant='contained' onClick={handleNextPlayer}>
-                Next Player
+                Next
             </Button>
         </div>
 
