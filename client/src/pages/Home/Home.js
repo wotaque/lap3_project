@@ -2,11 +2,18 @@ import React, {useState} from 'react';
 import { Select, MenuItem, InputLabel, FormControl, Button, Container, TextField, CssBaseline, Paper } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import {useNavigate} from 'react-router-dom';
+import RemoveIcon from '@mui/icons-material/Remove';
+import AddIcon from '@mui/icons-material/Add';
+
 
 const Home = ({setName, setPlayers, fetchQuestions, players}) => {
  const [amount, setAmount] = useState("");
  const [difficulty, setDifficulty] = useState("");
  const [category, setCategory] = useState("");
+ const [ inputFields, setInputFields ] = useState([
+    { firstName: '', lastName: '' },
+ ]);
+ 
  
 const navigate = useNavigate();
 
@@ -25,8 +32,23 @@ const navigate = useNavigate();
   const handleCategory = (e) => setCategory(e.target.value);
  
 
+  const handleChangeInput = (index, event) => {
+      const values = [...inputFields];
+      values[index][event.target.name] = event.target.value;
+      setInputFields(values);
+  }
 
-const useStyles = makeStyles({
+  const handleAddFields = () => {
+      setInputFields([...inputFields, { firstName: '', lastName: ''}])
+  }
+
+  const handleRemoveInput = (id) => {
+      const values = [...inputFields];
+      values.splice(values.findIndex(value => value.id === id), 1);
+      setInputFields(values);
+  }
+
+  const useStyles = makeStyles({
     paperRoot: {
       background: 'linear-gradient(45deg, #A0D2EB 30%, #D0BDF4 90%)',
       border: 0,
@@ -37,8 +59,9 @@ const useStyles = makeStyles({
     },
   });
  const classes = useStyles();
- return <div id="home" className={classes.root} >
-    
+
+ return <div id="home" className={classes.root}>
+   
     <CssBaseline />
     <Container sx={{ maxWidth: 500 }} style={{ width: 400, margin: 'auto' }}>
 
@@ -46,6 +69,28 @@ const useStyles = makeStyles({
       component="form"
       sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
     >
+
+<Container>
+          <form>
+                { inputFields.map((inputField, index) => (
+                    <div key={index}>
+                        <TextField 
+                            name="firstName"
+                            label="First Name"
+                            value={inputField.firstName}
+                            onChange={event => handleChangeInput(index, event)}/>
+                        <TextField 
+                            name="lastName"
+                            label="Last Name"
+                            value={inputField.lastName}
+                            onChange={event => handleChangeInput(index, event)}/>  
+                        <RemoveIcon disabled={inputFields.length === 1} onClick={() => handleRemoveInput(inputField.id)}/>
+                        <AddIcon onClick={() => handleAddFields()}/>
+                    </div>
+                ))}
+                
+            </form>
+      </Container>
    
     
 
@@ -66,12 +111,6 @@ const useStyles = makeStyles({
                     <MenuItem value="2">3</MenuItem>
                     <MenuItem value="3">4</MenuItem>                    
                 </Select>    
-            </FormControl>
-           
-            <FormControl margin='normal' >
-                
-                <TextField label = "Name" color="secondary"  onChange={(e =>setName(e.target.value))} />
-
             </FormControl>
 
             <FormControl margin='normal'  >
@@ -133,11 +172,7 @@ const useStyles = makeStyles({
     
      
     </div>
-        
 };
-
-
-
 
 
 export default Home;

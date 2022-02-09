@@ -5,7 +5,6 @@ import Home from './pages/Home/Home';
 import Quiz from './pages/Quiz/Quiz';
 import Result from './pages/Result/Result';
 import Leaderboard from './pages/Leaderboard/Leaderboard';
-import Dark from './components/DarkMode/index.js';
 import Header from './components/Header/Header.js';
 import Footer from './components/Footer/Footer.js';
 import "./App.css";
@@ -41,11 +40,7 @@ function App() {
 
     return (
         <div id="app">
-
-
             <Header />
-
-            <Dark />
 
             <Routes>
                 <Route path='/' element={<Home name={name} setName={setName} category={category} difficulty={difficulty} fetchQuestions={fetchQuestions} setPlayers={setPlayers} players={players} />}/>
@@ -57,14 +52,12 @@ function App() {
                 <Route path='/leaderboard' element={<Leaderboard name={name} score={score} category={category} difficulty={difficulty} players={players}/>} />
 
                 <Route path="*" element={<p>nothing here mate</p>}/>
-     
             </Routes>
 
             <Footer /> 
 
             <Outlet />
 
-            
         </div>
     )
 }
