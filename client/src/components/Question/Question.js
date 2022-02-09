@@ -26,7 +26,10 @@ const Question = ({
     //const [error, setError] = useState(false)
 
 
-    const [score1, setScore1] = useState([curPlay,score])
+    const [userScore, setUserScore] = useState([{
+        username: curPlay, 
+        score: score
+    }])
 
     const handleSelect = (i) => {
         if(selected===i && selected===correct ){
@@ -44,11 +47,13 @@ const Question = ({
         console.log(score)
     }
 
-    // useEffect(() =>{
-    //     setScore1(arr=>[curPlay,score])
+    useEffect(() =>{
+        setUserScore([{
+            username: curPlay,
+            score: score}])
        
-    // },[curPlay, score])
-    //      console.log(score1)
+    },[curPlay, score])
+         console.log(score)
          
     let navigate = useNavigate();
 
