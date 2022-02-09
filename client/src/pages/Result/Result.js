@@ -3,11 +3,10 @@ import { useNavigate } from 'react-router';
 import { Button, Container, TextField, CssBaseline, Paper } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import Axios from 'axios';
-import Parent from './bgTheme.js'
-
 
 const Result = ({inputFields, score, category, difficulty, amount, setScore}) => {
     const navigate = useNavigate();
+
 
     const handlePost = (e) => {
         e.preventDefault();
@@ -44,42 +43,53 @@ const Result = ({inputFields, score, category, difficulty, amount, setScore}) =>
 
     const useStyles = makeStyles({
         paperRoot: {
-            background: 'linear-gradient(45deg, #A0D2EB 30%, #D0BDF4 90%)',
-            border: 0,
-            borderRadius: 3,
-            boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-            color: 'white',
+          background: 'linear-gradient(45deg, #A0D2EB 30%, #D0BDF4 90%)',
+          border: 0,
+          borderRadius: 3,
+          boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+          color: 'white',
+        
         },
-    });
+      });
+     const classes = useStyles();
 
-    const classes = useStyles();
+     const resultName = () => {
+         for(let i=0; i<)
+     }
 
-    return <Parent className={classes.root} style={{ width: '100%' }} >
+     return <div className={classes.root} style={{ width: '100%' }} >
         
         <CssBaseline />
         <Container sx={{ maxWidth: 500 }} style={{ width: 400, margin: 'auto' }}>
     
-            <Paper className={classes.paperRoot}
-            component="form"
-            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
-            >
-                <h2>Result</h2>
-                    
-                <div>Name: {inputFields} 
-                    <div>Final Score: {score}/{amount}</div>
-                    <div>Category: {categoryNames(category)}</div>
-                    <div>Difficulty: {difficulty}</div>
-                    
-                    <Button onClick={goHome}>Home</Button>
-                    <Button onClick={handlePost}>Post Score</Button>
-                    <Button onClick={goLeaderboard}>Leaderboard</Button>
-                </div>
-                
-            </Paper>
+        <Paper className={classes.paperRoot}
+          component="form"
+          sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
+        >
+      <h2>Result</h2>
+      <div>
+          Name: {inputFields[0].username} 
+          <div>
+           Final Score: {score}/{amount}
+          </div>
+          <div>
+              Category: {categoryNames(category)}
+          </div>
+          <div>
+              Difficulty: {difficulty}
+          </div>
+          
+          
+          <Button onClick={goHome}>Home</Button>
+          <Button onClick={handlePost}>Post Score</Button>
+          <Button onClick={goLeaderboard}>Leaderboard</Button>
+      </div>
+            
+    </Paper>
    
-        </Container>
+   </Container>
    
-    </Parent>;
+    </div>;
 };
 
 export default Result; 
