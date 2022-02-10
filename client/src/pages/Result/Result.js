@@ -6,7 +6,7 @@ import Axios from 'axios';
 
 import Image from './winners.png';
 
-const Result = ({inputFields, score, category, difficulty, amount, setScore, setInputFields}) => {
+const Result = ({inputFields,  category, difficulty, amount, setInputFields}) => {
     const navigate = useNavigate();
     const max = inputFields.reduce((prev, current) => (prev.points > current.points) ? prev : current)
 
@@ -19,8 +19,7 @@ const Result = ({inputFields, score, category, difficulty, amount, setScore, set
 
     const goHome = () => {
         navigate('/')
-        setInputFields([{username: '',score: 0}])
-        setScore(0)
+        setInputFields([{username: '',points: 0}])
     }
 
     const goLeaderboard = () => {

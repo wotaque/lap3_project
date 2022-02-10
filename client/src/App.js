@@ -13,14 +13,14 @@ import "./App.css";
 
 function App() {
     const [questions, setQuestions] = useState();
-    const [score, setScore] = useState(0);
+    // const [score, setScore] = useState(0);
     const [number, setNumber]=useState();
     const [players, setPlayers] = useState()
     const [category, setCategory] = useState("");
     const [difficulty, setDifficulty] = useState("")
     const [amount, setAmount] = useState()
     const [ inputFields, setInputFields ] = useState([
-        { username: '', points: score},
+        { username: '', points: 0},
      ]);
     
     const fetchQuestions = async (amount, category, difficulty) => {
@@ -46,13 +46,13 @@ function App() {
             <Header />
 
             <Routes>
-                <Route path='/' element={<Home category={category} difficulty={difficulty} fetchQuestions={fetchQuestions} setPlayers={setPlayers} players={players} inputFields={inputFields} setInputFields={setInputFields} score={score} />}/>
+                <Route path='/' element={<Home category={category} difficulty={difficulty} fetchQuestions={fetchQuestions} setPlayers={setPlayers} players={players} inputFields={inputFields} setInputFields={setInputFields} />}/>
        
-                <Route path='/quiz' element={<Quiz questions = {questions} score = {score} setScore={setScore} number={number} players={players} inputFields={inputFields} setInputFields={setInputFields}/>} />
+                <Route path='/quiz' element={<Quiz questions = {questions}  number={number} players={players} inputFields={inputFields} setInputFields={setInputFields}/>} />
 
-                <Route path='/result' element={<Result score={score} category={category} amount={amount} difficulty={difficulty} players={players} setScore={setScore} inputFields={inputFields} setInputFields={setInputFields}/>} />
+                <Route path='/result' element={<Result  category={category} amount={amount} difficulty={difficulty} players={players} inputFields={inputFields} setInputFields={setInputFields}/>} />
                 
-                <Route path='/leaderboard' element={<Leaderboard score={score} category={category} difficulty={difficulty} players={players}/>} />
+                <Route path='/leaderboard' element={<Leaderboard  category={category} difficulty={difficulty} players={players}/>} />
 
                 <Route path="*" element={<p>nothing here mate</p>}/>
             </Routes>

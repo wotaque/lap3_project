@@ -8,7 +8,7 @@ import AddIcon from '@mui/icons-material/Add';
 import Image from './pending.png';
 
 
-const Home = ({fetchQuestions, inputFields, setInputFields, score}) => {
+const Home = ({fetchQuestions, inputFields, setInputFields}) => {
     const [amount, setAmount] = useState("");
     const [difficulty, setDifficulty] = useState("");
     const [category, setCategory] = useState("");
@@ -41,7 +41,7 @@ const Home = ({fetchQuestions, inputFields, setInputFields, score}) => {
     }
 
     const handleAddFields = () => {
-        setInputFields([...inputFields, { username: '', points: score}])
+        setInputFields([...inputFields, { username: '', points: 0}])
     }
 
     const handleRemoveInput = (id) => {
@@ -68,13 +68,12 @@ const Home = ({fetchQuestions, inputFields, setInputFields, score}) => {
         sx={{ width: 800, height: 800}}
         > 
    
-        <CssBaseline />
-
-        <Container sx={{ maxWidth: 500 }} style={{ width: 400, margin: 'auto' }}>
+    <CssBaseline />
+    <Container sx={{ maxWidth: 500 }} style={{ width: 400, margin: 'auto' }}>
 
     <Paper className={classes.paperRoot}
       component="form"
-      sx={{ p: '2px 4px', display: 'flex', alignItems: 'center' }}
+      sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width:400 }}
     >
 
 
@@ -87,8 +86,9 @@ const Home = ({fetchQuestions, inputFields, setInputFields, score}) => {
                         <Grid container spacing={0}>
                             <Grid item xs={4}>
                                 <TextField 
+                                    color="secondary"
                                     name="username"
-                                    label="Type Username"
+                                    label="Username"
                                     value={inputField.username}
                                     onChange={event => handleChangeInput(index, event)}/>
                                     <AddIcon onClick={() => handleAddFields()}/>
@@ -99,31 +99,36 @@ const Home = ({fetchQuestions, inputFields, setInputFields, score}) => {
                     </FormControl>
                 </div>
             ))}
-            <FormControl margin='normal'  >
-                <TextField labelid="amount-label"
-                    id = "amount" 
-                    color="secondary"
-                    value={amount}
-                    label="Type Number of Questions" 
-                    onChange={handleAmount}/>
-            </FormControl>
             <FormControl margin='normal' color="secondary">
-                <InputLabel id="difficulty-label">Choose Level of Difficulty</InputLabel>
-                <Select labelid="difficulty-label"
+
+                <TextField
+                    color="secondary"
+                    labelid="amount-label"
+                    id = "amount" 
+                    value={amount}
+                    label="No. of Questions" 
+                    onChange={handleAmount}/>
+
+            </FormControl>
+
+            <FormControl margin='normal' color="secondary">
+                <InputLabel id="difficalty-label"
+                >Difficulty</InputLabel>
+                    <Select labelid="difficulty-label"
                         id = "difficulty" 
-                        value={difficulty}
                         label="Difficulty" 
-                        onChange={handleDifficulty}
-                >           
-                    <MenuItem value="easy">Easy</MenuItem>
-                    <MenuItem value="medium">Medium</MenuItem>
-                    <MenuItem value="hard">Hard</MenuItem>                
-                </Select>     
+                        value={difficulty}
+                        onChange={handleDifficulty}>
+                            <MenuItem value="easy">Easy</MenuItem>
+                            <MenuItem value="medium">Medium</MenuItem>
+                            <MenuItem value="hard">Hard</MenuItem>                
+                    </Select>     
+
             </FormControl>
 
             <FormControl margin='normal' color="secondary">
                 <InputLabel id="category-label"
-                >Select a Category</InputLabel>
+                >Category</InputLabel>
                 
                 <Select labelid="category-label"
                         id = "category" 
@@ -138,12 +143,15 @@ const Home = ({fetchQuestions, inputFields, setInputFields, score}) => {
                     <MenuItem value="31">Anime & Manga</MenuItem>
                 </Select>   
             </FormControl>
+
             <FormControl  margin='normal'>
                 <Button color="secondary" variant="contained" onClick={handleSubmit} value="Start Quiz" >Start Quiz</Button>
             </FormControl>
+
             <FormControl  margin='normal'>
                 <Button variant="contained" onClick={handleScores}> CURRENT LEADERS</Button>
             </FormControl>
+
         </FormControl>
     </Paper>
     </Container>
