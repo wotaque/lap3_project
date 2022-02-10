@@ -22,15 +22,15 @@ const Question = ({
 
     console.log(inputFields)
 
-    const handleSelect = (i) => {
-        if(selected===i && selected===correct ){
-            return 'select';
-        }else if(selected===i && selected !==correct){
-            return "wrong"
-        }else if(i===correct){
-            return 'select;'
-        }
-    }
+    // const handleSelect = (i) => {
+    //     if(selected===i && selected===correct ){
+    //         return 'select';
+    //     }else if(selected===i && selected !==correct){
+    //         return "wrong"
+    //     }else if(i===correct){
+    //         return 'select;'
+    //     }
+    // }
 
     const handleCheck = (i) =>{
         setSelected(i);

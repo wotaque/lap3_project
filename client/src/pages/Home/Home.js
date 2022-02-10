@@ -69,11 +69,11 @@ const Home = ({fetchQuestions, inputFields, setInputFields}) => {
         > 
    
     <CssBaseline />
-    <Container sx={{margin: 'auto' }}>
+    <Container sx={{ maxWidth: 500 }} style={{ width: 400, margin: 'auto' }}>
 
     <Paper className={classes.paperRoot}
       component="form"
-      sx={{ p: '2px 4px', display: 'flex', alignItems: 'center' }}
+      sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width:400 }}
     >
 
 
@@ -86,8 +86,9 @@ const Home = ({fetchQuestions, inputFields, setInputFields}) => {
                         <Grid container spacing={0}>
                             <Grid item xs={4}>
                                 <TextField 
+                                    color="secondary"
                                     name="username"
-                                    label="Type Username"
+                                    label="Username"
                                     value={inputField.username}
                                     onChange={event => handleChangeInput(index, event)}/>
                                     <AddIcon onClick={() => handleAddFields()}/>
@@ -100,20 +101,22 @@ const Home = ({fetchQuestions, inputFields, setInputFields}) => {
             ))}
             <FormControl margin='normal' color="secondary">
 
-                <TextField labelid="amount-label"
+                <TextField
+                    color="secondary"
+                    labelid="amount-label"
                     id = "amount" 
                     value={amount}
-                    label="Type Number of Questions" 
+                    label="No. of Questions" 
                     onChange={handleAmount}/>
 
             </FormControl>
 
             <FormControl margin='normal' color="secondary">
                 <InputLabel id="difficalty-label"
-                >Difficalty</InputLabel>
+                >Difficulty</InputLabel>
                     <Select labelid="difficulty-label"
                         id = "difficulty" 
-                        label="Difficalty" 
+                        label="Difficulty" 
                         value={difficulty}
                         onChange={handleDifficulty}>
                             <MenuItem value="easy">Easy</MenuItem>
