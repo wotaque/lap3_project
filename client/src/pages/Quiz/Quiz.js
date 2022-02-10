@@ -61,11 +61,11 @@ const Quiz = ({questions,number,inputFields}) => {
 
     <CssBaseline />
 
-    <Container sx={{ maxWidth: 500 }} style={{ width: 400, margin: 'auto' }}>
+    <Container sx={{ margin: 'auto' }}>
 
       <Paper className={classes.paperRoot}
       component="form" variant="outlined"
-      sx={{ p: '20px 20px 10px 5px', display: 'flex', alignItems: 'center', width: 400 }}
+      sx={{ p: '20px 20px 10px 5px', display: 'flex', alignItems: 'center' }}
       >
         {questions ?(
           <div>

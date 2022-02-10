@@ -1,19 +1,19 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
-import { Button, Container, CssBaseline, Paper, FormControl, Box, Grid } from '@mui/material';
+import { Button, Container, CssBaseline, Paper, FormControl, Box, Grid, TableContainer,Table,TableRow,TableCell,TableBody,TableHead } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import Axios from 'axios';
-
+import he from 'he';
 import Image from './winners.png';
 
-const Result = ({inputFields,  category, difficulty, amount, setInputFields}) => {
+const Result = ({inputFields,  category, difficulty, amount, setInputFields, questions}) => {
     const navigate = useNavigate();
     const max = inputFields.reduce((prev, current) => (prev.points > current.points) ? prev : current)
 
     var numPlayer = inputFields.length;
     const handlePost = (e) => {
         e.preventDefault();
-        Axios.post("http://localhost:3001/insert", {name: max.username, score: max.points, category: category, amount: amount, difficulty: difficulty});
+        Axios.post("https://quiz-serrver.herokuapp.com/insert", {name: max.username, score: max.points, category: category, amount: amount, difficulty: difficulty});
         alert('Your score has been posted!')
     }
 
@@ -25,6 +25,10 @@ const Result = ({inputFields,  category, difficulty, amount, setInputFields}) =>
     const goLeaderboard = () => {
         navigate('/leaderboard')
     }
+    const renderRows = (questions) =>{
+    return questions.map(r =><TableRow><TableCell style={{fontFamily: 'Sucrose Bold Two', color: '#8458B3'}}>{he.decode(r.question)}</TableCell><TableCell style={{fontFamily: 'Sucrose Bold Two', color: '#8458B3'}}>{he.decode(r.correct_answer)}</TableCell></TableRow>)
+    }
+ 
 
     const categoryNames = (category) => {
         if (category == 15){
@@ -60,7 +64,7 @@ const Result = ({inputFields,  category, difficulty, amount, setInputFields}) =>
              displayResultName.push(<div>
                 Name:
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{inputFields[i].username} <br />
-                Score:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{inputFields[i].points}</div>
+                Score:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{inputFields[i].points}/{amount}</div>
              )
         }
         return displayResultName
@@ -73,11 +77,11 @@ const Result = ({inputFields,  category, difficulty, amount, setInputFields}) =>
         sx={{ width: 800, height: 1000}}
     > 
         <CssBaseline />
-        <Container sx={{ maxWidth: 500 }} style={{ width: 400, margin: 'auto' }}>
+        <Container sx={{  margin: 'auto' }}>
 
             <Paper className={classes.paperRoot}
                 component="form" variant="outlined"
-                sx={{ p: '10px 10px', display: 'flex', alignItems: 'center', width: 400 }}
+                sx={{ p: '10px 10px', display: 'flex', alignItems: 'center' }}
             >
                 <div>
                     <div><h2>Your Result</h2></div>
@@ -88,34 +92,54 @@ const Result = ({inputFields,  category, difficulty, amount, setInputFields}) =>
                     <div>Difficulty:
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{difficulty}</div>
                 </div>
+
+                <TableContainer sx={{ margin: 'auto' } }>
+                <Table sx={{ maxWidth: 10000, margin: 'auto'}} aria-label="simple table"   >
+                    <TableHead>
+                        <TableRow>
+                            <TableCell style={{fontFamily: 'Sucrose Bold Two', color: '#8458B3'}} align= "left">Question</TableCell>
+                            <TableCell style={{fontFamily: 'Sucrose Bold Two', color: '#8458B3'}} align= "left">Answer</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody  >
+                        
+                        {renderRows(questions)}
+
+                      
+                    </TableBody>
+                </Table>
+            </TableContainer>
+
+          
         
             </Paper>
 
-            <Grid sx={{ maxWidth: 500 }} style={{ width: 400, margin: 'auto' }}
+            
+            <Grid sx={{ maxWidth: 450, margin: 'auto' }}
             display="flex" justifyContent="space-between">
 
                 <FormControl  margin='normal'>
-                    <Button variant='contained' 
+                    <Button variant='contained' color='secondary' 
                     style={{fontSize: 14, height: 40 }}
                     onClick={goHome}>Home</Button>
                 </FormControl>
 
                 <FormControl  margin='normal'>
-                    <Button variant='contained' color='primary' 
+                    <Button variant='contained' color='secondary' 
                     style={{fontSize: 14, height: 40 }}
                     onClick={goLeaderboard}> CURRENT LEADERS</Button>
                 </FormControl>
 
                 <FormControl  margin='normal'>
-                    <Button variant='contained' color='primary' 
+                    <Button variant='contained' color='secondary' 
                     style={{fontSize: 14, height: 40 }}
-                    onClick={handlePost}>Save Score</Button>
+                    onClick={handlePost}>Save High Score</Button>
                 </FormControl>
 
             </Grid>
 
         </Container>
-
+       
     </Box> 
     </>
 };
