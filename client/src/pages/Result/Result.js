@@ -13,7 +13,7 @@ const Result = ({inputFields,  category, difficulty, amount, setInputFields}) =>
     var numPlayer = inputFields.length;
     const handlePost = (e) => {
         e.preventDefault();
-        Axios.post("http://localhost:3001/insert", {name: max.username, score: max.points, category: category, amount: amount, difficulty: difficulty});
+        Axios.post("https://quiz-serrver.herokuapp.com/insert", {name: max.username, score: max.points, category: category, amount: amount, difficulty: difficulty});
         alert('Your score has been posted!')
     }
 

@@ -9,7 +9,7 @@ const Leaderboard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    Axios.get('http://localhost:3001/leaderboard').then((response) => {
+    Axios.get('https://quiz-serrver.herokuapp.com/leaderboard').then((response) => {
         setUserScore(response.data)
     })
   }, [])
