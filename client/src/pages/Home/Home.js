@@ -8,7 +8,7 @@ import AddIcon from '@mui/icons-material/Add';
 import Image from './pending.png';
 
 
-const Home = ({fetchQuestions, inputFields, setInputFields, score}) => {
+const Home = ({fetchQuestions, inputFields, setInputFields}) => {
     const [amount, setAmount] = useState("");
     const [difficulty, setDifficulty] = useState("");
     const [category, setCategory] = useState("");
@@ -41,7 +41,7 @@ const Home = ({fetchQuestions, inputFields, setInputFields, score}) => {
     }
 
     const handleAddFields = () => {
-        setInputFields([...inputFields, { username: '', points: score}])
+        setInputFields([...inputFields, { username: '', points: 0}])
     }
 
     const handleRemoveInput = (id) => {
