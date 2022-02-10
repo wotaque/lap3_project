@@ -4,7 +4,7 @@ import "./Footer.css";
 const Footer = () => {
   return (
     <footer>
-      <h1>Made in England</h1>
+      <h1>Copyright 2022 Noamaan, Marina, Brandon</h1>
     </footer>
   );
 };

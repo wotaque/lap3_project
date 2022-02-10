@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
-import { Button, Card, CardContent, Paper, Typography } from '@mui/material';
+import { Button, Card, CardContent, Paper, Typography, Box, Container } from '@mui/material';
 import { useNavigate } from 'react-router';
 import { makeStyles } from '@mui/styles';
 
@@ -50,11 +50,16 @@ const Leaderboard = () => {
 
   return <div className={classes.root}>
       
-      <Button variant="contained" onClick={goHome}>Home</Button>
+      
       <Paper className={classes.paperRoot}>
         <Typography variant="h3" gutterBottom={true} align="center">
             Leaderboard
         </Typography>
+        <Container sx={{ maxWidth: 1000 }} style={{ width: 100, margin: 'auto' }}>
+          <Button variant="" onClick={goHome}>Home</Button>
+        </Container>
+          
+  
       </Paper>
       
       <Paper elevation={3} style={{padding:20, color:"black"}} className={classes.paperRoot}>
