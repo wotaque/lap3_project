@@ -1,9 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Button, Container, CssBaseline, Grid } from '@mui/material';
-
 import { useNavigate } from 'react-router';
 import he from 'he';
-
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 
 const Question = ({
@@ -24,10 +22,6 @@ const Question = ({
     const [selected, setSelected] = useState(false)
     //const [error, setError] = useState(false)
 
-
-    
-
-    
     console.log(inputFields)
 
     const handleSelect = (i) => {
@@ -52,7 +46,6 @@ const Question = ({
         //    setScore(0) 
            console.log(score)
         } 
-       
     }
      console.log(score)
     
@@ -63,7 +56,6 @@ const Question = ({
     //         // setInputFields(inputFields[0].score + 1)
     // },[score, setInputFields])
        
-         
     let navigate = useNavigate();
 
     const handleNextPlayer= () =>{
@@ -74,7 +66,6 @@ const Question = ({
              setCurPlay(curPlay => curPlay + 1)
              setCurQues(curQues)
              setSelected()
-             
         } 
     }
 
@@ -106,9 +97,10 @@ const Question = ({
     // }
 
    
-     return <div  style={{ width: '100%' }} >
+    return <div  style={{ width: '100%' }} >
     
     <CssBaseline />
+    
     <Container sx={{ maxWidth: 500 }} style={{ width: 400, margin: 'auto' }}>
 
    
@@ -120,15 +112,14 @@ const Question = ({
 
         <div>
             {choices && choices.map(i =>(
-              <Grid ><Button variant= '' onClick={() => handleCheck(i)}
+                <Grid ><Button variant= '' onClick={() => handleCheck(i)}
                     className={`singleOption ${selected && handleSelect(i)}`}
                     key={i}
                     disabled={selected}
-              >{he.decode(i)}</Button></Grid>
+                >{he.decode(i)}</Button></Grid>
             ))}
         </div>
 
-        
         <Grid container justifyContent="flex-end">
  
             <Button variant='contained' color='secondary' 
@@ -139,10 +130,7 @@ const Question = ({
                 Next
             </Button>
         </Grid>
-
-     
-   
-   </Container>
+    </Container>
     </div>;
 };
 
