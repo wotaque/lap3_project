@@ -6,7 +6,7 @@ import { Container, CssBaseline, Paper, Box } from '@mui/material';
 
 import Image from './answer.png';
 
-const Quiz = ({score,questions,setScore,number,inputFields, setInputFields}) => {
+const Quiz = ({questions,number,inputFields}) => {
 
   const [choices, setChoices] = useState()
   const [curQues , setCurQues] = useState(0)
@@ -20,12 +20,7 @@ const Quiz = ({score,questions,setScore,number,inputFields, setInputFields}) => 
     );
   },[questions,curQues]); 
   
-  // useEffect(()=>{
-  //   setCurPlay(curPlay) 
-  // },[curPlay, setCurPlay])
-
-  //console.log(choices)
-  //shuffle answers
+ 
 
   const handleShuffle = (options) => {
     return options.sort(()=> Math.random() -0.5 );
@@ -87,14 +82,11 @@ const Quiz = ({score,questions,setScore,number,inputFields, setInputFields}) => 
               questions={questions}
               choices={choices}
               correct={questions[curQues]?.correct_answer}
-              score={score}
-              setScore={setScore}
               number={number}
               curPlay={curPlay}
               setCurPlay={setCurPlay}
               numPlayer={numPlayer}
               inputFields={inputFields}
-              setInputFields={setInputFields}
             />
             
           </div> ):(<CircularProgress />)
