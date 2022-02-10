@@ -12,8 +12,8 @@ const Result = ({inputFields, score, category, difficulty, amount, setScore, set
     var numPlayer = inputFields.length;
     const handlePost = (e) => {
         e.preventDefault();
-        Axios.post("http://localhost:3001/insert", {name: inputFields, score: score, category: category, amount: amount, difficulty: difficulty});
-        alert('Your score has been saved!')
+        Axios.post("http://localhost:3001/insert", {name: inputFields[0].username, score: inputFields[0].points, category: category, amount: amount, difficulty: difficulty});
+        alert('Your score has been posted!')
     }
 
     const goHome = () => {
@@ -54,15 +54,18 @@ const Result = ({inputFields, score, category, difficulty, amount, setScore, set
     });
     const classes = useStyles();
 
-    console.log(score)
-
     const resultName = () => {
         let displayResultName = []
          for(let i = 0; i < numPlayer; i++){
+
              displayResultName.push(<div>
                 Name:
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{inputFields[i].username} <br />
                 Score:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+
+             displayResultName.push(<div>Name: {inputFields[i].username} <br />
+             Score: {inputFields[i].points}/{amount} </div>
+
             )
         }
         return displayResultName
@@ -77,9 +80,11 @@ const Result = ({inputFields, score, category, difficulty, amount, setScore, set
         sx={{ width: 800, height: 1000}}
     > 
 
+
         <CssBaseline />
 
         <Container sx={{ maxWidth: 500 }} style={{ width: 400, margin: 'auto' }}>
+
 
             <Paper className={classes.paperRoot}
                 component="form" variant="outlined"
@@ -126,6 +131,7 @@ const Result = ({inputFields, score, category, difficulty, amount, setScore, set
 
     </Box> 
     </>
+
 };
 
 export default Result; 

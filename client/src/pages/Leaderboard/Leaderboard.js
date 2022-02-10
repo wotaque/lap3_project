@@ -19,19 +19,19 @@ const Leaderboard = () => {
 }
 
    const categoryNames = (num) => {
-       if (num === 15){
+       if (num == 15){
            return "Video Games"
        }
-       if(num === 9){
+       if(num == 9){
            return "General Knowledge"
        }
-       if(num === 21){
+       if(num == 21){
            return "Sports"
        }
-       if(num === 23){
+       if(num == 23){
            return "History"
        }
-       if(num === 31){
+       if(num == 31){
            return "Anime and Manga"
        }
    }
