@@ -6,8 +6,6 @@ import he from 'he';
 
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 
-
-
 const Question = ({
     curQues,
     setCurQues,
