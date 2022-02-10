@@ -10,7 +10,7 @@ const Result = ({inputFields, score, category, difficulty, amount, setScore, set
     var numPlayer = inputFields.length;
     const handlePost = (e) => {
         e.preventDefault();
-        Axios.post("http://localhost:3001/insert", {name: inputFields, score: score, category: category, amount: amount, difficulty: difficulty});
+        Axios.post("http://localhost:3001/insert", {name: inputFields[0].username, score: inputFields[0].points, category: category, amount: amount, difficulty: difficulty});
         alert('Your score has been posted!')
     }
 
@@ -54,13 +54,13 @@ const Result = ({inputFields, score, category, difficulty, amount, setScore, set
       });
      const classes = useStyles();
 
-     console.log(score)
+     
 
      const resultName = () => {
         let displayResultName = []
          for(let i = 0; i < numPlayer; i++){
              displayResultName.push(<div>Name: {inputFields[i].username} <br />
-             Score: </div>
+             Score: {inputFields[i].points}/{amount} </div>
             )
          }
          return displayResultName
@@ -68,6 +68,7 @@ const Result = ({inputFields, score, category, difficulty, amount, setScore, set
 
      
      console.log(resultName())
+     console.log(inputFields[0].username)
      return <div className={classes.root} style={{ width: '100%' }} >
         
         <CssBaseline />
@@ -82,9 +83,6 @@ const Result = ({inputFields, score, category, difficulty, amount, setScore, set
             <div>
                 {resultName()} 
             </div>
-          <div>
-           Final Score: {score}/{amount}
-          </div>
           <div>
               Category: {categoryNames(category)}
           </div>
