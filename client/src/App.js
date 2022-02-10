@@ -10,7 +10,6 @@ import Footer from './components/Footer/Footer.js';
 import "./App.css";
 
 
-
 function App() {
     const [questions, setQuestions] = useState();
     // const [score, setScore] = useState(0);
@@ -29,7 +28,6 @@ function App() {
         let url = (`https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=multiple`)    
         let { data } = await axios.get(url)  
     
-   
         setQuestions(data.results)
         setNumber(amount)
         setCategory(category)
@@ -39,7 +37,6 @@ function App() {
             throw error
         }
     } 
-    
 
     return (
         <div id="app">

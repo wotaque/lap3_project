@@ -76,7 +76,6 @@ const Home = ({fetchQuestions, inputFields, setInputFields}) => {
       sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width:400 }}
     >
 
-
         <FormControl  className="form" margin='normal' style={{  margin: 'auto' }}  >
     
             { inputFields.map((inputField, index) => (
@@ -100,7 +99,6 @@ const Home = ({fetchQuestions, inputFields, setInputFields}) => {
                 </div>
             ))}
             <FormControl margin='normal' color="secondary">
-
                 <TextField
                     color="secondary"
                     labelid="amount-label"
@@ -108,7 +106,6 @@ const Home = ({fetchQuestions, inputFields, setInputFields}) => {
                     value={amount}
                     label="No. of Questions" 
                     onChange={handleAmount}/>
-
             </FormControl>
 
             <FormControl margin='normal' color="secondary">
