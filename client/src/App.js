@@ -12,7 +12,6 @@ import "./App.css";
 
 function App() {
     const [questions, setQuestions] = useState();
-    // const [score, setScore] = useState(0);
     const [number, setNumber]=useState();
     const [players, setPlayers] = useState()
     const [category, setCategory] = useState("");
@@ -47,7 +46,7 @@ function App() {
        
                 <Route path='/quiz' element={<Quiz questions = {questions}  number={number} players={players} inputFields={inputFields} setInputFields={setInputFields}/>} />
 
-                <Route path='/result' element={<Result  category={category} amount={amount} difficulty={difficulty} players={players} inputFields={inputFields} setInputFields={setInputFields}/>} />
+                <Route path='/result' element={<Result  category={category} amount={amount} difficulty={difficulty} players={players} inputFields={inputFields} setInputFields={setInputFields} questions={questions}/>} />
                 
                 <Route path='/leaderboard' element={<Leaderboard  category={category} difficulty={difficulty} players={players}/>} />
 

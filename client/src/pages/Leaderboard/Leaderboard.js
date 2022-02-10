@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
-import { Button, Card, CardContent, Paper, Typography, Box, Container } from '@mui/material';
+import { Button, Paper, Typography, Container } from '@mui/material';
 import { useNavigate } from 'react-router';
 import { makeStyles } from '@mui/styles';
 
@@ -51,7 +51,7 @@ const Leaderboard = () => {
   return <div className={classes.root}>
       
       <Paper className={classes.paperRoot}>
-        <Typography variant="h3" gutterBottom={true} align="center">
+        <Typography variant="h3" gutterBottom={true} align="center" style={{fontFamily: 'Sucrose Bold Two', color: '#8458B3'}}>
             Leaderboard
         </Typography>
         <Container sx={{ maxWidth: 1000 }} style={{ width: 100, margin: 'auto' }}>
@@ -62,10 +62,10 @@ const Leaderboard = () => {
       <Paper elevation={3} style={{padding:20, color:"black"}} className={classes.paperRoot}>
             {userScore.map((val, key) => {
             return <div key={key}> 
-            <Typography variant="h4">Username: {val.name}</Typography> 
-            <Typography variant="h6">Score: {val.score}/{val.amount}</Typography>
-            <Typography variant="h6"> Difficulty: {val.difficulty}</Typography>
-            <Typography variant="h6">Category: {categoryNames(val.category)}</Typography>
+            <Typography style={{fontFamily: 'Sucrose Bold Two', color: '#8458B3'}} variant="h4">Username: {val.name}</Typography> 
+            <Typography style={{fontFamily: 'Sucrose Bold Two', color: '#8458B3'}} variant="h6">Score: {val.score}/{val.amount}</Typography>
+            <Typography style={{fontFamily: 'Sucrose Bold Two', color: '#8458B3'}}variant="h6"> Difficulty: {val.difficulty}</Typography>
+            <Typography style={{fontFamily: 'Sucrose Bold Two', color: '#8458B3'}}variant="h6">Category: {categoryNames(val.category)}</Typography>
             </div>
         })} 
       </Paper>
