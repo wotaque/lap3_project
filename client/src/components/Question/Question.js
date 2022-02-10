@@ -1,9 +1,7 @@
 import React, {useState} from 'react';
 import { Button, Container, CssBaseline, Grid } from '@mui/material';
-
 import { useNavigate } from 'react-router';
 import he from 'he';
-
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 
 const Question = ({
@@ -22,10 +20,6 @@ const Question = ({
     const [selected, setSelected] = useState("")
    
 
-
-    
-
-    
     console.log(inputFields)
 
     const handleSelect = (i) => {
@@ -42,11 +36,8 @@ const Question = ({
         setSelected(i);
         
         if (i===correct) {
-           
-        
-            inputFields[curPlay].points = inputFields[curPlay].points + 1
-            
-         } 
+                inputFields[curPlay].points = inputFields[curPlay].points + 1
+            } 
        
     }
     console.log(inputFields[curPlay].points )
@@ -62,7 +53,6 @@ const Question = ({
              setCurPlay(curPlay => curPlay + 1)
              setCurQues(curQues)
              setSelected()
-             
         } 
     }
 
@@ -78,9 +68,10 @@ const Question = ({
    
    
    
-     return <div  style={{ width: '100%' }} >
+    return <div  style={{ width: '100%' }} >
     
     <CssBaseline />
+    
     <Container sx={{ maxWidth: 500 }} style={{ width: 400, margin: 'auto' }}>
 
    
@@ -95,11 +86,10 @@ const Question = ({
               <Grid ><Button variant= '' onClick={() => handleCheck(i)}
                     key={i}
                     disabled={selected}
-              >{he.decode(i)}</Button></Grid>
+                >{he.decode(i)}</Button></Grid>
             ))}
         </div>
 
-        
         <Grid container justifyContent="flex-end">
  
             <Button variant='contained' color='secondary' 
@@ -111,10 +101,7 @@ const Question = ({
                 Next
             </Button>
         </Grid>
-
-     
-   
-   </Container>
+    </Container>
     </div>;
 };
 

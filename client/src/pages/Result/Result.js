@@ -6,20 +6,20 @@ import Axios from 'axios';
 
 import Image from './winners.png';
 
-const Result = ({inputFields, score, category, difficulty, amount, setScore, setInputFields}) => {
+const Result = ({inputFields,  category, difficulty, amount, setInputFields}) => {
     const navigate = useNavigate();
+    const max = inputFields.reduce((prev, current) => (prev.points > current.points) ? prev : current)
 
     var numPlayer = inputFields.length;
     const handlePost = (e) => {
         e.preventDefault();
-        Axios.post("http://localhost:3001/insert", {name: inputFields, score: score, category: category, amount: amount, difficulty: difficulty});
-        alert('Your score has been saved!')
+        Axios.post("http://localhost:3001/insert", {name: max.username, score: max.points, category: category, amount: amount, difficulty: difficulty});
+        alert('Your score has been posted!')
     }
 
     const goHome = () => {
         navigate('/')
-        setInputFields([{username: '',score: 0}])
-        setScore(0)
+        setInputFields([{username: '',points: 0}])
     }
 
     const goLeaderboard = () => {
@@ -54,21 +54,21 @@ const Result = ({inputFields, score, category, difficulty, amount, setScore, set
     });
     const classes = useStyles();
 
-    console.log(score)
-
     const resultName = () => {
         let displayResultName = []
          for(let i = 0; i < numPlayer; i++){
+
              displayResultName.push(<div>
                 Name:
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{inputFields[i].username} <br />
-                Score:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-            )
+                Score:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{inputFields[i].points}</div>
+             )
         }
         return displayResultName
     }
     console.log(resultName())
-
+    
+    
     
     return <>
     <Box 
@@ -77,9 +77,11 @@ const Result = ({inputFields, score, category, difficulty, amount, setScore, set
         sx={{ width: 800, height: 1000}}
     > 
 
+
         <CssBaseline />
 
         <Container sx={{ maxWidth: 500 }} style={{ width: 400, margin: 'auto' }}>
+
 
             <Paper className={classes.paperRoot}
                 component="form" variant="outlined"
@@ -89,8 +91,7 @@ const Result = ({inputFields, score, category, difficulty, amount, setScore, set
                 <div>
                     <div><h2>Your Result</h2></div>
                     <div>{resultName()}</div>
-                    <div>Final Score:
-                    &nbsp;&nbsp;&nbsp;&nbsp;{score}/{amount}</div>
+                    
                     <div>Category:
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{categoryNames(category)}</div>
                     <div>Difficulty:
@@ -126,6 +127,7 @@ const Result = ({inputFields, score, category, difficulty, amount, setScore, set
 
     </Box> 
     </>
+
 };
 
 export default Result; 
