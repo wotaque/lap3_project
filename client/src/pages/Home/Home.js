@@ -99,31 +99,34 @@ const Home = ({fetchQuestions, inputFields, setInputFields, score}) => {
                     </FormControl>
                 </div>
             ))}
-            <FormControl margin='normal'  >
+            <FormControl margin='normal' color="secondary">
+
                 <TextField labelid="amount-label"
                     id = "amount" 
-                    color="secondary"
                     value={amount}
                     label="Type Number of Questions" 
                     onChange={handleAmount}/>
+
             </FormControl>
+
             <FormControl margin='normal' color="secondary">
-                <InputLabel id="difficulty-label">Choose Level of Difficulty</InputLabel>
-                <Select labelid="difficulty-label"
+                <InputLabel id="difficalty-label"
+                >Difficalty</InputLabel>
+                    <Select labelid="difficulty-label"
                         id = "difficulty" 
+                        label="Difficalty" 
                         value={difficulty}
-                        label="Difficulty" 
-                        onChange={handleDifficulty}
-                >           
-                    <MenuItem value="easy">Easy</MenuItem>
-                    <MenuItem value="medium">Medium</MenuItem>
-                    <MenuItem value="hard">Hard</MenuItem>                
-                </Select>     
+                        onChange={handleDifficulty}>
+                            <MenuItem value="easy">Easy</MenuItem>
+                            <MenuItem value="medium">Medium</MenuItem>
+                            <MenuItem value="hard">Hard</MenuItem>                
+                    </Select>     
+
             </FormControl>
 
             <FormControl margin='normal' color="secondary">
                 <InputLabel id="category-label"
-                >Select a Category</InputLabel>
+                >Category</InputLabel>
                 
                 <Select labelid="category-label"
                         id = "category" 
@@ -138,12 +141,15 @@ const Home = ({fetchQuestions, inputFields, setInputFields, score}) => {
                     <MenuItem value="31">Anime & Manga</MenuItem>
                 </Select>   
             </FormControl>
+
             <FormControl  margin='normal'>
                 <Button color="secondary" variant="contained" onClick={handleSubmit} value="Start Quiz" >Start Quiz</Button>
             </FormControl>
+
             <FormControl  margin='normal'>
                 <Button variant="contained" onClick={handleScores}> CURRENT LEADERS</Button>
             </FormControl>
+
         </FormControl>
     </Paper>
     </Container>
