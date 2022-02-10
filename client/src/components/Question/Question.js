@@ -68,11 +68,11 @@ const Question = ({
    
    
    
-    return <div  style={{ width: '100%' }} >
+    return <div  style={{ width: '100%', align: "center"}} >
     
     <CssBaseline />
     
-    <Container sx={{ maxWidth: 500 }} style={{ width: 400, margin: 'auto' }}>
+    <Container sx={{  margin: 'auto', align: "center" }}>
 
    
         <h1>Question # {curQues + 1}</h1>

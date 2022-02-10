@@ -61,19 +61,19 @@ const Home = ({fetchQuestions, inputFields, setInputFields}) => {
     });
     const classes = useStyles();
 
- return <>
+ return <div>
     <Box 
         style={{ backgroundImage: `url(${Image})`,
             backgroundRepeat:'no-repeat', width: '100%', margin: 'auto' }} 
         sx={{ width: 800, height: 800}}
         > 
    
-    <CssBaseline />
-    <Container sx={{ maxWidth: 500 }} style={{ width: 400, margin: 'auto' }}>
+    <CssBaseline /> 
+    <Container sx={{  margin: 'auto' }} >
 
     <Paper className={classes.paperRoot}
       component="form"
-      sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width:400 }}
+      sx={{ p: '20px 20px 10px 5px', display: 'flex', alignItems: 'center' }}
     >
 
         <FormControl  className="form" margin='normal' style={{  margin: 'auto' }}  >
@@ -103,6 +103,7 @@ const Home = ({fetchQuestions, inputFields, setInputFields}) => {
                     color="secondary"
                     labelid="amount-label"
                     id = "amount" 
+                    type = "number"
                     value={amount}
                     label="No. of Questions" 
                     onChange={handleAmount}/>
@@ -153,7 +154,7 @@ const Home = ({fetchQuestions, inputFields, setInputFields}) => {
     </Paper>
     </Container>
     </Box>
-    </>
+    </div>
 };
 
 
