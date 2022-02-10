@@ -50,7 +50,6 @@ const Leaderboard = () => {
 
   return <div className={classes.root}>
       
-      
       <Paper className={classes.paperRoot}>
         <Typography variant="h3" gutterBottom={true} align="center">
             Leaderboard
@@ -58,8 +57,6 @@ const Leaderboard = () => {
         <Container sx={{ maxWidth: 1000 }} style={{ width: 100, margin: 'auto' }}>
           <Button variant="" onClick={goHome}>Home</Button>
         </Container>
-          
-  
       </Paper>
       
       <Paper elevation={3} style={{padding:20, color:"black"}} className={classes.paperRoot}>
@@ -73,8 +70,6 @@ const Leaderboard = () => {
         })} 
       </Paper>
       
-       
-        
   </div>;
 };
 

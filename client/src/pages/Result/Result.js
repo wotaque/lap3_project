@@ -57,7 +57,6 @@ const Result = ({inputFields,  category, difficulty, amount, setInputFields}) =>
     const resultName = () => {
         let displayResultName = []
          for(let i = 0; i < numPlayer; i++){
-
              displayResultName.push(<div>
                 Name:
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{inputFields[i].username} <br />
@@ -66,28 +65,20 @@ const Result = ({inputFields,  category, difficulty, amount, setInputFields}) =>
         }
         return displayResultName
     }
-    console.log(resultName())
-    
-    
-    
+
     return <>
     <Box 
         style={{ backgroundImage: `url(${Image})`,
             backgroundRepeat:'no-repeat', width: '100%', margin: 'auto' }} 
         sx={{ width: 800, height: 1000}}
     > 
-
-
         <CssBaseline />
-
         <Container sx={{ maxWidth: 500 }} style={{ width: 400, margin: 'auto' }}>
-
 
             <Paper className={classes.paperRoot}
                 component="form" variant="outlined"
                 sx={{ p: '10px 10px', display: 'flex', alignItems: 'center', width: 400 }}
             >
-
                 <div>
                     <div><h2>Your Result</h2></div>
                     <div>{resultName()}</div>
@@ -127,7 +118,6 @@ const Result = ({inputFields,  category, difficulty, amount, setInputFields}) =>
 
     </Box> 
     </>
-
 };
 
 export default Result; 

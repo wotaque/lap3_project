@@ -50,8 +50,7 @@ const Quiz = ({questions,number,inputFields}) => {
       return inputFields[3].username
     }
   } 
-  console.log(inputFields)
-
+  
 
   return <div>
     <Box 
@@ -90,7 +89,6 @@ const Quiz = ({questions,number,inputFields}) => {
             />
             
           </div> ):(<CircularProgress />)
-            
         }    
         
       </Paper>
